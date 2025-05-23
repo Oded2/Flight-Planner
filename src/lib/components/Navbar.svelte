@@ -10,12 +10,11 @@
 
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
-		{ code: 'he', label: 'עברית' },
-		{ code: 'es', label: 'Español' }
+		{ code: 'he', label: 'עברית' }
 	];
 </script>
 
-<div class="navbar bg-primary text-primary-content shadow-sm">
+<div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
 	<div class="flex-1">
 		<button onclick={reset} class="btn btn-ghost text-xl">Flight Planner</button>
 	</div>

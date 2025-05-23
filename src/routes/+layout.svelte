@@ -25,7 +25,7 @@
 </script>
 
 {#if isReady}
-	<div class="flex min-h-screen flex-col">
+	<div class="flex min-h-screen flex-col print:min-h-auto">
 		<Navbar locale={$locale ?? 'en'} {handleLanguageChange}></Navbar>
 		{@render children()}
 	</div>

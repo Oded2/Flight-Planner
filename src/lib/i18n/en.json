@@ -1,6 +1,6 @@
 {
     "welcome": "Welcome to flight planner",
-    "description": "No need to spend hours creating a flight plan chart. Make your ideal flight plan chart within minutes using flight planner's simple user interface and automatic calculations.",
+    "description": "No need to spend hours making a flight plan chart. Create your ideal flight plan chart within minutes using flight planner's simple user interface and automatic calculations.",
     "get_started": "Get Started",
     "optional": "Optional",
     "back": "Back",
@@ -31,5 +31,6 @@
     "add_entry": "Add Entry",
     "finish_entries": "Finish",
     "incomplete_message": "It looks like there are unfinished fields. Do you wish to continue?",
-    "total": "Total"
+    "total": "Total",
+    "print": "Print"
 }

@@ -4,9 +4,9 @@
 	import { addEntry, info } from '$lib/stores/info';
 	import { next } from '$lib/stores/stages';
 
-	let entryNum: number = $state(1);
+	const lastIndex = $info.entries.length - 1;
 
-	let from: string = $state('');
+	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to);
 	let to: string = $state('');
 	let heading: number = $state(NaN);
 	let altitude: number = $state(NaN);
@@ -18,7 +18,6 @@
 		const time = distance / $info.speed;
 		const fuel = time * $info.fuelPerHour;
 		addEntry({ from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
-		entryNum++;
 		from = to;
 		to = '';
 		heading = NaN;
@@ -49,7 +48,9 @@
 	}}
 >
 	<div class="card-body">
-		<h2 class="card-title mb-2">{`${$t('entries_label')} ${entryNum}`}</h2>
+		<h2 class="card-title mb-2">
+			{`${$t('entries_label')} ${($info.entries.length + 1).toLocaleString()}`}
+		</h2>
 		<div class="flex flex-col gap-3">
 			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
 			<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>
