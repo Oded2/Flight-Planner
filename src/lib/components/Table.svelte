@@ -12,8 +12,8 @@
 		distance: $info.totalDistance,
 		time: $info.totalTime,
 		fuel: $info.totalFuel,
-		identifierPoints: '-',
-		story: '-'
+		identifierPoints: '',
+		story: ''
 	});
 </script>
 

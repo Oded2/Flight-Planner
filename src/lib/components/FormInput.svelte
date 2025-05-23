@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from 'svelte-i18n';
+	import { number, t } from 'svelte-i18n';
 	import type { ChangeEventHandler, HTMLInputTypeAttribute } from 'svelte/elements';
 
 	let {
@@ -8,6 +8,7 @@
 		required,
 		inputType,
 		value = $bindable(),
+		step,
 		min,
 		max,
 		onchange
@@ -17,6 +18,7 @@
 		required?: boolean;
 		inputType?: HTMLInputTypeAttribute;
 		value?: string | number;
+		step?: number;
 		min?: number;
 		max?: number;
 		onchange?: ChangeEventHandler<HTMLInputElement>;
@@ -27,7 +29,7 @@
 	{label}
 	<input
 		type={inputType}
-		step="0.001"
+		{step}
 		class="grow"
 		bind:value
 		{placeholder}

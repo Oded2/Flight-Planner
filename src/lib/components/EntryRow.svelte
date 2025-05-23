@@ -29,6 +29,6 @@
 	<td>{entry.distance.toLocaleString()}</td>
 	<td>{timeFormatted}</td>
 	<td>{entry.fuel.toFixed(1)}</td>
-	<td dir="auto" class="text-start">{entry.identifierPoints || '-'}</td>
-	<td dir="auto" class="text-start">{entry.story || '-'}</td>
+	<td dir="auto" class:text-start={entry.identifierPoints}>{entry.identifierPoints || '-'}</td>
+	<td dir="auto" class:text-start={entry.story}>{entry.story || '-'}</td>
 </tr>

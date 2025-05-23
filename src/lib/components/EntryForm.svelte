@@ -60,7 +60,6 @@
 				min={1}
 				max={360}
 				label={$t('entry_heading')}
-				required
 			></FormInput>
 			<FormInput
 				bind:value={altitude}
@@ -73,6 +72,7 @@
 				bind:value={distance}
 				inputType="number"
 				min={0.001}
+				step={0.001}
 				label={$t('entry_distance')}
 				required
 			></FormInput>
