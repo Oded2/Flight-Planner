@@ -3,7 +3,6 @@ import { writable, type Writable } from 'svelte/store';
 import { setStage } from './stages';
 
 const defaultInfo: Info = {
-	author: undefined,
 	startingPoint: '',
 	endingPoint: '',
 	entries: [],

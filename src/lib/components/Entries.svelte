@@ -4,7 +4,7 @@
 	import Table from './Table.svelte';
 </script>
 
-<div class="grid grid-cols-6 gap-4 xl:flex-row" dir="auto">
+<div class="flex grid-cols-6 flex-col gap-4 xl:grid" dir="auto">
 	<!-- Placeholder text in order for dir="auto" to work properly -->
 	<h1 class="hidden">{$t('welcome')}</h1>
 	<div class="col-span-2 w-full overflow-auto">

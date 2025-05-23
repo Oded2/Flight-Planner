@@ -18,7 +18,10 @@
 </script>
 
 <div class="rounded-box border-base-content/5 bg-base-100 overflow-x-auto border">
-	<table class="table text-center" dir="auto">
+	<table class="table-zebra table text-center" dir="auto">
+		<caption class="mt-3 text-xl font-semibold" dir="auto">
+			{`${$info.startingPoint} ${$t('entry_to')} ${$info.endingPoint}`}
+		</caption>
 		<thead>
 			<tr>
 				<th>#</th>
@@ -38,7 +41,7 @@
 				<EntryRow {entry} index={(index + 1).toLocaleString()}></EntryRow>
 			{/each}
 			{#if $info.entries.length > 1}
-				<EntryRow entry={totalEntry} index="Total"></EntryRow>
+				<EntryRow entry={totalEntry} index={$t('total')}></EntryRow>
 			{/if}
 		</tbody>
 	</table>

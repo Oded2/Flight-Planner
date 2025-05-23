@@ -16,11 +16,6 @@
 		<h2 class="card-title mb-2">{$t('first_questions_label')}</h2>
 		<div class="flex flex-col gap-3">
 			<LabelInput
-				label={$t('author_question')}
-				placeholder={$t('author_placeholder')}
-				param="author"
-			></LabelInput>
-			<LabelInput
 				label={$t('starting_point_question')}
 				placeholder={$t('starting_point_placeholder')}
 				param="startingPoint"
@@ -52,7 +47,6 @@
 			></LabelInput>
 		</div>
 		<div class="card-actions mt-2 justify-end">
-			<button onclick={back} type="button" class="btn btn-secondary">{$t('back')}</button>
 			<button type="submit" class="btn btn-primary">{$t('next')}</button>
 		</div>
 	</div>

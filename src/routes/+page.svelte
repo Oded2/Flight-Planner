@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Entries from '$lib/components/Entries.svelte';
-	import Table from '$lib/components/Table.svelte';
 	import Greeting from '$lib/components/Greeting.svelte';
 	import Questions from '$lib/components/Questions.svelte';
 	import StageContainer from '$lib/components/StageContainer.svelte';
+	import Final from '$lib/components/Final.svelte';
 </script>
 
 <StageContainer stageNumber={0}>
@@ -16,7 +16,7 @@
 	<Entries></Entries>
 </StageContainer>
 <StageContainer stageNumber={3}>
-	<Table></Table>
+	<Final></Final>
 </StageContainer>
 
 <svelte:head><title>Flight Planner</title></svelte:head>
