@@ -2,14 +2,15 @@
 	import FormInput from './FormInput.svelte';
 	import { addEntry, info } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
+	import { addParams } from '$lib';
 
 	const lastIndex = $info.entries.length - 1;
 
 	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to);
 	let to: string = $state('');
-	let heading: number = $state(NaN);
-	let altitude: number = $state(NaN);
-	let distance: number = $state(NaN);
+	let heading: number | undefined = $state();
+	let altitude: number | undefined = $state();
+	let distance: number | undefined = $state();
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 
@@ -22,14 +23,14 @@
 	}
 
 	function handleEntry(): void {
+		if (!distance || !altitude) return;
 		const time = distance / $info.speed;
 		const fuel = time * $info.fuelPerHour;
 		addEntry({ from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
 		from = to;
 		to = '';
-		heading = NaN;
-		altitude = NaN;
-		distance = NaN;
+		heading = undefined;
+		distance = undefined;
 		identifierPoints = '';
 		story = '';
 	}
@@ -80,6 +81,7 @@
 			<button type="button" onclick={handlePrint} class="btn btn-neutral w-full"
 				>{$t('print')}
 			</button>
+
 			<span class="font-light italic">{$t('print_tip')}</span>
 		</div>
 	</div>

@@ -25,8 +25,8 @@
 	<td>{index}</td>
 	<td>{entry.from}</td>
 	<td>{entry.to}</td>
-	<td>{isNaN(entry.heading) ? '-' : entry.heading.toLocaleString().padStart(3, '0')}</td>
-	<td>{isNaN(entry.altitude) ? '-' : entry.altitude.toLocaleString()}</td>
+	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
+	<td>{entry.altitude?.toLocaleString() ?? '-'}</td>
 	<td>{entry.distance.toLocaleString()}</td>
 	<td>{timeFormatted}</td>
 	<td>{entry.fuel.toFixed(1)}</td>

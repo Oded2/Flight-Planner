@@ -6,8 +6,8 @@ export type SelectOption = {
 export type Entry = {
 	from: string;
 	to: string;
-	heading: number;
-	altitude: number;
+	heading?: number;
+	altitude?: number;
 	distance: number;
 	time: number;
 	fuel: number;
@@ -25,3 +25,11 @@ export type Info = {
 	totalTime: number;
 	totalFuel: number;
 };
+
+export function addParams(link: string, params: Record<string, string>): string {
+	const searchParams = new URLSearchParams();
+	Object.entries(params).forEach(([key, value]) => {
+		searchParams.append(key, value);
+	});
+	return `${link}?${searchParams.toString()}`;
+}

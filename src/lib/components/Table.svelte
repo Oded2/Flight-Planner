@@ -7,8 +7,6 @@
 	const totalEntry: Entry = $derived({
 		from: '-',
 		to: '-',
-		heading: NaN,
-		altitude: NaN,
 		distance: $info.totalDistance,
 		time: $info.totalTime,
 		fuel: $info.totalFuel,
@@ -17,7 +15,7 @@
 	});
 </script>
 
-<div class="rounded-box border-base-content/5 bg-base-100 overflow-x-auto border">
+<div class="rounded-box border-base-content/5 bg-base-100 border">
 	<table class="table-zebra table text-center" dir="auto">
 		<caption class="mt-3 text-xl font-semibold" dir="auto">
 			{`${$info.startingPoint} ${$t('entry_to')} ${$info.endingPoint}`}

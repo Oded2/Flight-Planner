@@ -10,7 +10,9 @@
 	<div class="col-span-2 w-full overflow-auto print:hidden">
 		<EntryForm></EntryForm>
 	</div>
-	<div class="col-span-4 mx-auto flex w-full flex-col gap-4 overflow-auto print:col-span-full">
+	<div
+		class="col-span-4 mx-auto flex w-full flex-col gap-4 overflow-auto print:col-span-full print:overflow-visible"
+	>
 		<Table></Table>
 	</div>
 </div>
