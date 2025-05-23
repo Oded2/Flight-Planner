@@ -16,7 +16,6 @@ export type Entry = {
 };
 
 export type Info = {
-	name: string;
 	author?: string;
 	startingPoint: string;
 	endingPoint: string;

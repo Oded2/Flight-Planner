@@ -1,8 +1,8 @@
 import type { Entry, Info } from '$lib';
 import { writable, type Writable } from 'svelte/store';
+import { setStage } from './stages';
 
 const defaultInfo: Info = {
-	name: 'Flight Plan',
 	author: undefined,
 	startingPoint: '',
 	endingPoint: '',
@@ -26,6 +26,7 @@ export function addEntry(entry: Entry): void {
 	}));
 }
 
-export function restart(): void {
+export function reset(): void {
+	setStage(0);
 	info.set(defaultInfo);
 }

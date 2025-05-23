@@ -15,8 +15,6 @@
 	<div class="card-body">
 		<h2 class="card-title mb-2">{$t('first_questions_label')}</h2>
 		<div class="flex flex-col gap-3">
-			<LabelInput label={$t('title_question')} placeholder={$t('title_placeholder')} param="name"
-			></LabelInput>
 			<LabelInput
 				label={$t('author_question')}
 				placeholder={$t('author_placeholder')}

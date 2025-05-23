@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { SelectOption } from '$lib';
-	import { reset } from '$lib/stores/stages';
+	import { reset } from '$lib/stores/info';
 	import LabelSelect from './LabelSelect.svelte';
 
 	const {

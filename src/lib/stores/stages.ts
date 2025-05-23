@@ -10,6 +10,6 @@ export function back() {
 	stage.update((s) => s - 1);
 }
 
-export function reset() {
-	stage.set(0);
+export function setStage(num: number) {
+	stage.set(num);
 }
