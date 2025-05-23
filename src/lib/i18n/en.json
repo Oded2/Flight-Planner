@@ -1,5 +1,21 @@
 {
     "welcome": "Welcome to flight planner",
     "description": "No need to spend hours creating a flight plan chart. Make your ideal flight plan chart within minutes using flight planner's simple user interface and automatic calculations.",
-    "get_started": "Get Started"
+    "get_started": "Get Started",
+    "optional": "Optional",
+    "back": "Back",
+    "next": "Next",
+    "first_questions_label": "First, a couple of questions",
+    "title_question": "Name of Flight Plan",
+    "title_placeholder": "My Flight Plan",
+    "author_question": "Owner Name",
+    "author_placeholder": "Who's flight plan is this?",
+    "fuel_question": "Fuel Usage",
+    "fuel_placeholder": "In Gallons per Hour",
+    "speed_question": "Cruising Speed",
+    "speed_placeholder": "In Knots",
+    "starting_point_question": "Starting Point",
+    "starting_point_placeholder": "Where are you flying from?",
+    "ending_point_question": "Ending Point",
+    "ending_point_placeholder": "Where are you flying to?"
 }

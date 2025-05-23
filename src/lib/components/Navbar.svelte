@@ -9,7 +9,8 @@
 
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
-		{ code: 'he', label: 'עברית' }
+		{ code: 'he', label: 'עברית' },
+		{ code: 'es', label: 'Español' }
 	];
 </script>
 

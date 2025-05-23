@@ -1,0 +1,20 @@
+{
+    "welcome": "Bienvenido al planificador de vuelos",
+    "description": "No necesitas pasar horas creando un plan de vuelo. Crea tu plan de vuelo ideal en minutos usando la interfaz sencilla del planificador y cálculos automáticos.",
+    "get_started": "Comenzar",
+    "optional": "Opcional",
+    "next": "Siguiente",
+    "first_questions_label": "Primero, un par de preguntas",
+    "title_question": "Nombre del plan de vuelo",
+    "title_placeholder": "Mi plan de vuelo",
+    "author_question": "Nombre del propietario",
+    "author_placeholder": "¿De quién es este plan de vuelo?",
+    "fuel_question": "Consumo de combustible",
+    "fuel_placeholder": "En galones por hora",
+    "speed_question": "Velocidad de crucero",
+    "speed_placeholder": "En nudos",
+    "starting_point_question": "Punto de partida",
+    "starting_point_placeholder": "¿Desde dónde vuelas?",
+    "ending_point_question": "Punto de llegada",
+    "ending_point_placeholder": "¿A dónde vuelas?"
+}

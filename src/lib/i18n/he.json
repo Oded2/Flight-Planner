@@ -1,5 +1,20 @@
 {
-    "welcome": "ברוכים הבאים למתכנן הטיסות",
-    "description": "אין צורך לבזבז שעות על יצירת תרשים תוכנית טיסה. צור את תרשים תוכנית הטיסה האידיאלי שלך תוך דקות בעזרת ממשק המשתמש הפשוט של מתכנן הטיסות וחישובים אוטומטיים.",
-    "get_started": "להתחלה"
+    "welcome": "ברוך הבא למתכנן הטיסות",
+    "description": "אין צורך לבזבז שעות על יצירת טבלת תכנון טיסה. צור את טבלת תכנון הטיסה האידאלית שלך תוך דקות בעזרת ממשק המשתמש הפשוט של מתכנן הטיסות וחישובים אוטומטיים.",
+    "get_started": "התחל",
+    "optional": "לא חובה",
+    "next": "הבא",
+    "first_questions_label": "קודם, כמה שאלות",
+    "title_question": "שם תוכנית הטיסה",
+    "title_placeholder": "תוכנית הטיסה שלי",
+    "author_question": "שם בעל התוכנית",
+    "author_placeholder": "של מי תוכנית הטיסה הזאת?",
+    "fuel_question": "צריכת דלק",
+    "fuel_placeholder": "בגלונים לשעה",
+    "speed_question": "מהירות שיוט",
+    "speed_placeholder": "בקשרים",
+    "starting_point_question": "נקודת התחלה",
+    "starting_point_placeholder": "מאיפה אתה טס?",
+    "ending_point_question": "נקודת סיום",
+    "ending_point_placeholder": "לאן אתה טס?"
 }
