@@ -11,7 +11,8 @@
 		inputType,
 		param,
 		min,
-		max
+		max,
+		value
 	}: {
 		label: string;
 		placeholder?: string;
@@ -20,6 +21,7 @@
 		param: keyof Info;
 		min?: number;
 		max?: number;
+		value?: string | number;
 	} = $props();
 
 	function update(value: string) {
@@ -33,5 +35,6 @@
 	{required}
 	{min}
 	{max}
+	{value}
 	onchange={(e) => update(e.currentTarget.value)}
 ></FormInput>

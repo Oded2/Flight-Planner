@@ -41,6 +41,7 @@
 				inputType="number"
 				required
 				min={0}
+				value={8}
 			></LabelInput>
 			<LabelInput
 				label={$t('speed_question')}
@@ -49,6 +50,7 @@
 				inputType="number"
 				required
 				min={1}
+				value={90}
 			></LabelInput>
 		</div>
 		<div class="card-actions mt-2 justify-end">
