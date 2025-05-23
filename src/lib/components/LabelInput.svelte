@@ -25,7 +25,7 @@
 	} = $props();
 
 	function update(value: string) {
-		info.update((i) => ({ ...i, [param]: inputType === 'number' ? +value : value }));
+		info.update((i) => ({ ...i, [param]: inputType === 'number' ? +value : value.trim() }));
 	}
 </script>
 

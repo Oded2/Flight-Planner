@@ -18,7 +18,11 @@
 		if (!distance || !altitude) return;
 		const time = distance / $info.speed;
 		const fuel = time * $info.fuelPerHour;
-		addEntry({ from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
+		from = from.trim();
+		to = to.trim();
+		identifierPoints = identifierPoints.trim();
+		story = story.trim();
+		addEntry({ from: from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
 		from = to;
 		to = '';
 		heading = undefined;
