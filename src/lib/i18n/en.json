@@ -17,5 +17,15 @@
     "starting_point_question": "Starting Point",
     "starting_point_placeholder": "Where are you flying from?",
     "ending_point_question": "Ending Point",
-    "ending_point_placeholder": "Where are you flying to?"
+    "ending_point_placeholder": "Where are you flying to?",
+    "entries_label": "Entry no.",
+    "entry_from": "From",
+    "entry_to": "To",
+    "entry_heading": "Heading",
+    "entry_altitude": "Altitude",
+    "entry_distance": "Distance",
+    "entry_time": "Time",
+    "entry_fuel": "Fuel",
+    "entry_identifier": "Identifier Points",
+    "entry_story": "Story"
 }

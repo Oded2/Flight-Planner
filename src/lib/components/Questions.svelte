@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { t } from 'svelte-i18n';
 	import LabelInput from './LabelInput.svelte';
-	import { back, next, stage } from '$lib/stores/stages';
+	import { back, next } from '$lib/stores/stages';
 </script>
 
 <form
 	dir="auto"
-	class:hidden={$stage != 1}
 	class="card card-lg bg-base-300 mx-auto my-auto max-w-200"
 	onsubmit={(e) => {
 		e.preventDefault();

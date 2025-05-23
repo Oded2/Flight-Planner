@@ -9,9 +9,10 @@ export type Entry = {
 	heading: number;
 	altitude: number;
 	distance: number;
-	timeInSeconds: number;
-	identifierPoint: string;
-	story: string;
+	time: number;
+	fuel: number;
+	identifierPoints: string[];
+	story?: string;
 };
 
 export type Info = {

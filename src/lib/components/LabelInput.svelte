@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Info } from '$lib';
 	import { info } from '$lib/stores/info';
-	import { t } from 'svelte-i18n';
 	import type { HTMLInputTypeAttribute } from 'svelte/elements';
+	import FormInput from './FormInput.svelte';
 
 	const {
 		label,
@@ -27,18 +27,11 @@
 	}
 </script>
 
-<label class="input input-ghost w-full" dir="auto">
+<FormInput
 	{label}
-	<input
-		type={inputType}
-		class="grow"
-		{placeholder}
-		{required}
-		{min}
-		{max}
-		onchange={(e) => update(e.currentTarget.value)}
-	/>
-	{#if !required}
-		<span class="badge badge-neutral badge-xs">{$t('optional')}</span>
-	{/if}
-</label>
+	{placeholder}
+	{required}
+	{min}
+	{max}
+	onchange={(e) => update(e.currentTarget.value)}
+></FormInput>

@@ -1,4 +1,4 @@
-import type { Info } from '$lib';
+import type { Entry, Info } from '$lib';
 import { writable, type Writable } from 'svelte/store';
 
 export const info: Writable<Info> = writable({
@@ -10,3 +10,8 @@ export const info: Writable<Info> = writable({
 	fuelPerHour: 8,
 	speed: 90
 });
+
+export function addEntry(entry: Entry) {
+	console.log(entry);
+	info.update((i) => ({ ...i, entries: [...i.entries, entry] }));
+}

@@ -1,6 +1,6 @@
 import { writable, type Writable } from 'svelte/store';
 
-export const stage: Writable<number> = writable(0);
+export const stage: Writable<number> = writable(2);
 
 export function next() {
 	stage.update((s) => s + 1);
