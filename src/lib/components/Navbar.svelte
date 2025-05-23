@@ -1,17 +1,18 @@
 <script lang="ts">
 	import type { SelectOption } from '$lib';
 	import { reset } from '$lib/stores/info';
+	import { get } from 'svelte/store';
 	import LabelSelect from './LabelSelect.svelte';
+	import { locale } from '$lib/stores/localization';
 
-	const {
-		locale,
-		handleLanguageChange
-	}: { locale: string; handleLanguageChange: (code: string) => void } = $props();
+	const { handleLanguageChange }: { handleLanguageChange: (code: string) => void } = $props();
 
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
 		{ code: 'he', label: 'עברית' }
 	];
+
+	const originalLocale = get(locale);
 </script>
 
 <div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
@@ -23,7 +24,7 @@
 			onchange={(e) => handleLanguageChange(e.currentTarget.value)}
 			title="Language"
 			options={languages}
-			selectedOption={locale}
+			selectedOption={originalLocale}
 		></LabelSelect>
 	</div>
 </div>
