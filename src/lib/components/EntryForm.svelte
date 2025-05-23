@@ -14,14 +14,6 @@
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 
-	function handlePrint(): void {
-		const htmlRoot = document.documentElement;
-		const currentTheme = htmlRoot.getAttribute('data-theme') ?? 'light';
-		htmlRoot.setAttribute('data-theme', 'light');
-		print();
-		if (currentTheme !== 'light') htmlRoot.setAttribute('data-theme', currentTheme);
-	}
-
 	function handleEntry(): void {
 		if (!distance || !altitude) return;
 		const time = distance / $info.speed;
@@ -78,11 +70,11 @@
 		</div>
 		<div class="card-actions mt-2">
 			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
-			<button type="button" onclick={handlePrint} class="btn btn-neutral w-full"
-				>{$t('print')}
-			</button>
-
-			<span class="font-light italic">{$t('print_tip')}</span>
+			<a
+				href={addParams('/view', { info: JSON.stringify($info) })}
+				target="_blank"
+				class="btn btn-neutral w-full">View</a
+			>
 		</div>
 	</div>
 </form>

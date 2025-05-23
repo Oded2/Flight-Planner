@@ -6,6 +6,9 @@
 	import { locale } from '$lib/stores/localization';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
+	import { page } from '$app/state';
+
+	const isHome = !page.url.pathname.includes('view');
 
 	onMount(() => themeChange(false));
 
@@ -32,7 +35,11 @@
 
 <div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
 	<div class="flex-1">
-		<button onclick={reset} class="btn btn-ghost text-xl">Flight Planner</button>
+		{#if isHome}
+			<button onclick={reset} class="btn btn-ghost text-xl">Flight Planner</button>
+		{:else}
+			<a href="/" class="btn btn-ghost text-xl">Flight Planner</a>
+		{/if}
 	</div>
 	<div class="flex gap-4">
 		<LabelSelect
@@ -41,6 +48,8 @@
 			options={languages}
 			selectedOption={originalLocale}
 		></LabelSelect>
-		<LabelSelect themes label="Theme" options={themes}></LabelSelect>
+		{#if isHome}
+			<LabelSelect themes label="Theme" options={themes}></LabelSelect>
+		{/if}
 	</div>
 </div>
