@@ -3,23 +3,25 @@
 	import type { ChangeEventHandler } from 'svelte/elements';
 
 	const {
-		title,
+		label,
 		options,
 		selectedOption = options[0].code,
-		onchange
+		onchange,
+		themes
 	}: {
-		title: string;
+		label: string;
 		options: SelectOption[];
 		selectedOption?: string;
 		onchange?: ChangeEventHandler<HTMLSelectElement>;
+		themes?: boolean;
 	} = $props();
 
-	const uniqueId = `select${title}`;
+	const uniqueId = `select${label}`;
 </script>
 
 <div class="flex items-baseline gap-2">
-	<label for={uniqueId}>{title}</label>
-	<select id={uniqueId} {onchange} class="select select-ghost">
+	<label for={uniqueId}>{label}</label>
+	<select id={uniqueId} {onchange} class="select select-ghost" data-choose-theme={themes}>
 		{#each options as option}
 			<option selected={option.code == selectedOption} value={option.code}>{option.label}</option>
 		{/each}

@@ -4,12 +4,27 @@
 	import { get } from 'svelte/store';
 	import LabelSelect from './LabelSelect.svelte';
 	import { locale } from '$lib/stores/localization';
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
+
+	onMount(() => themeChange(false));
 
 	const { handleLanguageChange }: { handleLanguageChange: (code: string) => void } = $props();
 
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
 		{ code: 'he', label: 'עברית' }
+	];
+
+	const themes: SelectOption[] = [
+		{
+			code: 'light',
+			label: 'Light'
+		},
+		{
+			code: 'dark',
+			label: 'Dark'
+		}
 	];
 
 	const originalLocale = get(locale);
@@ -19,12 +34,13 @@
 	<div class="flex-1">
 		<button onclick={reset} class="btn btn-ghost text-xl">Flight Planner</button>
 	</div>
-	<div class="flex-none">
+	<div class="flex gap-4">
 		<LabelSelect
 			onchange={(e) => handleLanguageChange(e.currentTarget.value)}
-			title="Language"
+			label="Language"
 			options={languages}
 			selectedOption={originalLocale}
 		></LabelSelect>
+		<LabelSelect themes label="Theme" options={themes}></LabelSelect>
 	</div>
 </div>

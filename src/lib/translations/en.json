@@ -29,7 +29,7 @@
     "entry_identifier": "Identifier Points",
     "entry_story": "Story",
     "add_entry": "Add Entry",
-    "incomplete_message": "It looks like there are unfinished fields. Do you wish to continue?",
     "total": "Total",
-    "print": "Print"
+    "print": "Print",
+    "print_tip": "Tip: When printing, set the orientation to landscape."
 }

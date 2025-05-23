@@ -1,7 +1,6 @@
 <script lang="ts">
 	import FormInput from './FormInput.svelte';
 	import { addEntry, info } from '$lib/stores/info';
-	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
 
 	const lastIndex = $info.entries.length - 1;
@@ -14,6 +13,14 @@
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 
+	function handlePrint(): void {
+		const htmlRoot = document.documentElement;
+		const currentTheme = htmlRoot.getAttribute('data-theme') ?? 'light';
+		htmlRoot.setAttribute('data-theme', 'light');
+		print();
+		if (currentTheme !== 'light') htmlRoot.setAttribute('data-theme', currentTheme);
+	}
+
 	function handleEntry(): void {
 		const time = distance / $info.speed;
 		const fuel = time * $info.fuelPerHour;
@@ -25,17 +32,6 @@
 		distance = NaN;
 		identifierPoints = '';
 		story = '';
-	}
-
-	function handleFinish(): void {
-		let incomplete = to.length > 0;
-		incomplete = incomplete || !isNaN(heading);
-		incomplete = incomplete || !isNaN(altitude);
-		incomplete = incomplete || !isNaN(distance);
-		incomplete = incomplete || identifierPoints.length > 0;
-		incomplete = incomplete || story.length > 0;
-		if (!incomplete) next();
-		else if (confirm($t('incomplete_message'))) next();
 	}
 </script>
 
@@ -81,9 +77,10 @@
 		</div>
 		<div class="card-actions mt-2">
 			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
-			<button type="button" onclick={() => print()} class="btn btn-neutral w-full"
+			<button type="button" onclick={handlePrint} class="btn btn-neutral w-full"
 				>{$t('print')}
 			</button>
+			<span class="font-light italic">{$t('print_tip')}</span>
 		</div>
 	</div>
 </form>
