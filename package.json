@@ -39,6 +39,7 @@
 		"cookie": "^0.7.0"
 	},
 	"dependencies": {
-		"daisyui": "^5.0.37"
+		"daisyui": "^5.0.37",
+		"svelte-i18n": "^3.7.1"
 	}
 }

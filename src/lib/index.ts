@@ -1,1 +1,4 @@
-// place files you want to import through the `$lib` alias in this folder.
+export type SelectOption = {
+	code: string;
+	label: string;
+};
