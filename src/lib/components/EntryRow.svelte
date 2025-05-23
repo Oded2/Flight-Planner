@@ -3,21 +3,22 @@
 
 	const { entry, index }: { entry: Entry; index: string } = $props();
 
-	function formatHoursToMmSs(hours: number): string {
-		// Convert hours to total seconds and round appropriately
-		const totalSeconds = Math.round(hours * 3600);
+	function formatHour(hoursDecimal: number): string {
+		// total seconds, rounded to nearest integer
+		const totalSec = Math.round(hoursDecimal * 3600);
 
-		// Calculate total minutes and remaining seconds
-		const minutes = Math.floor(totalSeconds / 60);
-		const seconds = totalSeconds % 60;
+		// derive h, m, s
+		const h = Math.floor(totalSec / 3600);
+		const m = Math.floor((totalSec % 3600) / 60);
+		const s = totalSec % 60;
 
-		// Format as "MM:SS"
-		const mm = minutes;
-		const ss = seconds.toString().padStart(2, '0');
+		// helper for two-digit padding
+		const pad2 = (n: number) => (n < 10 ? '0' : '') + n;
 
-		return `${mm}:${ss}`;
+		// omit "hh:" when h is zero
+		return h > 0 ? `${h}:${pad2(m)}:${pad2(s)}` : `${m}:${pad2(s)}`;
 	}
-	const timeFormatted = $derived(formatHoursToMmSs(entry.time));
+	const timeFormatted = $derived(formatHour(entry.time));
 </script>
 
 <tr>
