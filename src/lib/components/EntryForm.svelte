@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from 'svelte-i18n';
 	import FormInput from './FormInput.svelte';
 	import { addEntry, info } from '$lib/stores/info';
 	import { next } from '$lib/stores/stages';
+	import { t } from '$lib/stores/localization';
 
 	const lastIndex = $info.entries.length - 1;
 

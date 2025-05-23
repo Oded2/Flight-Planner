@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { number, t } from 'svelte-i18n';
+	import { t } from '$lib/stores/localization';
 	import type { ChangeEventHandler, HTMLInputTypeAttribute } from 'svelte/elements';
 
 	let {

@@ -1,5 +1,5 @@
 <script>
-	import { t } from 'svelte-i18n';
+	import { t } from '$lib/stores/localization';
 	import EntryForm from './EntryForm.svelte';
 	import Table from './Table.svelte';
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { info } from '$lib/stores/info';
-	import { t } from 'svelte-i18n';
 	import EntryRow from './EntryRow.svelte';
 	import type { Entry } from '$lib';
+	import { t } from '$lib/stores/localization';
 
 	const totalEntry: Entry = $derived({
 		from: '-',

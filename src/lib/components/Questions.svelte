@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from 'svelte-i18n';
 	import LabelInput from './LabelInput.svelte';
-	import { back, next } from '$lib/stores/stages';
+	import { next } from '$lib/stores/stages';
+	import { t } from '$lib/stores/localization';
 </script>
 
 <form

@@ -1,7 +1,7 @@
 <script>
-	import { t } from 'svelte-i18n';
 	import Table from './Table.svelte';
 	import { back } from '$lib/stores/stages';
+	import { t } from '$lib/stores/localization';
 </script>
 
 <Table></Table>

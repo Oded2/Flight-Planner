@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { next, stage } from '$lib/stores/stages';
-	import { t } from 'svelte-i18n';
+	import { next } from '$lib/stores/stages';
+	import { t } from '$lib/stores/localization';
 </script>
 
 <div dir="auto" class="card card-lg bg-primary text-primary-content mx-auto my-auto max-w-110 pb-2">
