@@ -1,6 +1,7 @@
 export type SelectOption = {
 	code: string;
 	label: string;
+	disabled?: boolean;
 };
 
 export type Entry = {

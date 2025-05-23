@@ -21,6 +21,11 @@
 
 	const themes: SelectOption[] = [
 		{
+			code: 'default',
+			label: 'Choose Theme',
+			disabled: true
+		},
+		{
 			code: 'light',
 			label: 'Light'
 		},

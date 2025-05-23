@@ -23,7 +23,11 @@
 	<label for={uniqueId}>{label}</label>
 	<select id={uniqueId} {onchange} class="select select-ghost" data-choose-theme={themes}>
 		{#each options as option}
-			<option selected={option.code == selectedOption} value={option.code}>{option.label}</option>
+			<option
+				selected={option.code == selectedOption}
+				value={option.code}
+				disabled={option.disabled}>{option.label}</option
+			>
 		{/each}
 	</select>
 </div>
