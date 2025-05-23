@@ -2,7 +2,10 @@
 	import type { SelectOption } from '$lib';
 	import LabelSelect from './LabelSelect.svelte';
 
-	const { handleLanguageChange }: { handleLanguageChange: (code: string) => void } = $props();
+	const {
+		locale,
+		handleLanguageChange
+	}: { locale: string; handleLanguageChange: (code: string) => void } = $props();
 
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
@@ -19,6 +22,7 @@
 			onchange={(e) => handleLanguageChange(e.currentTarget.value)}
 			title="Language"
 			options={languages}
+			selectedOption={locale}
 		></LabelSelect>
 	</div>
 </div>

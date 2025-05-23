@@ -1,19 +1,24 @@
 <script lang="ts">
 	import Container from '$lib/components/Container.svelte';
-	import { t } from 'svelte-i18n';
+	import Greeting from '$lib/components/Greeting.svelte';
+	import Questions from '$lib/components/Questions.svelte';
+
+	let stage = $state(0);
+
+	function next(): void {
+		stage++;
+	}
+	function back(): void {
+		stage--;
+	}
 </script>
 
 <Container>
-	<div
-		dir="auto"
-		class="card card-lg bg-primary text-primary-content mx-auto my-auto max-w-110 pb-2"
-	>
-		<div class="card-body">
-			<h2 class="card-title">{$t('welcome')}</h2>
-			<p>{$t('description')}</p>
-			<div class="card-actions justify-end">
-				<button class="btn">{$t('get_started')}</button>
-			</div>
-		</div>
-	</div>
+	{#if stage == 0}
+		<Greeting onGetStarted={next}></Greeting>
+	{:else if stage == 1}
+		<Questions></Questions>
+	{/if}
 </Container>
+
+<svelte:head><title>Flight Planner</title></svelte:head>

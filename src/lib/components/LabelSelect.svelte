@@ -5,9 +5,14 @@
 	const {
 		title,
 		options,
+		selectedOption = options[0].code,
 		onchange
-	}: { title: string; options: SelectOption[]; onchange?: ChangeEventHandler<HTMLSelectElement> } =
-		$props();
+	}: {
+		title: string;
+		options: SelectOption[];
+		selectedOption?: string;
+		onchange?: ChangeEventHandler<HTMLSelectElement>;
+	} = $props();
 
 	const uniqueId = `select${title}`;
 </script>
@@ -16,7 +21,7 @@
 	<label for={uniqueId}>{title}</label>
 	<select id={uniqueId} {onchange} class="select select-ghost">
 		{#each options as option}
-			<option value={option.code}>{option.label}</option>
+			<option selected={option.code == selectedOption} value={option.code}>{option.label}</option>
 		{/each}
 	</select>
 </div>

@@ -11,19 +11,22 @@
 
 	const handleLanguageChange = (code: string) => {
 		locale.set(code);
+		localStorage.setItem('locale', code);
 	};
 
 	onMount(() => {
+		const storageLocale = localStorage.getItem('locale');
+		if (storageLocale) locale.set(storageLocale);
 		const unsubscribe = isLoading.subscribe((loading) => {
 			if (!loading) isReady = true;
 		});
-		return unsubscribe; // 👈 Clean up when component is destroyed
+		return unsubscribe;
 	});
 </script>
 
 {#if isReady}
 	<div class="flex min-h-screen flex-col">
-		<Navbar {handleLanguageChange}></Navbar>
+		<Navbar locale={$locale ?? 'en'} {handleLanguageChange}></Navbar>
 		{@render children()}
 	</div>
 {/if}
