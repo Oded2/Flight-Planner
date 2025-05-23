@@ -31,5 +31,6 @@
     "add_entry": "Add Entry",
     "total": "Total",
     "print": "Print",
-    "print_tip": "Tip: When printing, set the orientation to landscape."
+    "print_tip": "Tip: When printing, set the orientation to landscape.",
+    "view": "View"
 }

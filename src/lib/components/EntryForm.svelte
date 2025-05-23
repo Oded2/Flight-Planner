@@ -77,7 +77,7 @@
 			<a
 				href={addParams('/view', { info: JSON.stringify($info) })}
 				target="_blank"
-				class="btn btn-neutral w-full">View</a
+				class="btn btn-neutral w-full">{$t('view')}</a
 			>
 		</div>
 	</div>
