@@ -6,7 +6,7 @@
 </script>
 
 {#if $stage == stageNumber}
-	<div class="container mx-auto my-10 flex flex-1 flex-col print:max-w-full">
+	<div class="container mx-auto my-10 flex flex-1 flex-col print:my-0 print:max-w-full">
 		{@render children()}
 	</div>
 {/if}

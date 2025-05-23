@@ -3,7 +3,6 @@
 	import Greeting from '$lib/components/Greeting.svelte';
 	import Questions from '$lib/components/Questions.svelte';
 	import StageContainer from '$lib/components/StageContainer.svelte';
-	import Final from '$lib/components/Final.svelte';
 </script>
 
 <StageContainer stageNumber={0}>
@@ -14,9 +13,6 @@
 </StageContainer>
 <StageContainer stageNumber={2}>
 	<Entries></Entries>
-</StageContainer>
-<StageContainer stageNumber={3}>
-	<Final></Final>
 </StageContainer>
 
 <svelte:head><title>Flight Planner</title></svelte:head>

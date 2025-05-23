@@ -81,12 +81,9 @@
 		</div>
 		<div class="card-actions mt-2">
 			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
-			<button
-				type="button"
-				disabled={$info.entries.length == 0}
-				onclick={handleFinish}
-				class="btn btn-neutral w-full">{$t('finish_entries')}</button
-			>
+			<button type="button" onclick={() => print()} class="btn btn-neutral w-full"
+				>{$t('print')}
+			</button>
 		</div>
 	</div>
 </form>
