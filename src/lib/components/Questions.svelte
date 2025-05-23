@@ -6,7 +6,7 @@
 
 <form
 	dir="auto"
-	class="card card-lg bg-base-300 mx-auto my-auto max-w-200"
+	class="card card-lg bg-base-300 mx-auto my-auto w-200"
 	onsubmit={(e) => {
 		e.preventDefault();
 		next();
