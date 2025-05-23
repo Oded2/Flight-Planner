@@ -1,17 +1,31 @@
 import type { Entry, Info } from '$lib';
 import { writable, type Writable } from 'svelte/store';
 
-export const info: Writable<Info> = writable({
+const defaultInfo: Info = {
 	name: 'Flight Plan',
 	author: undefined,
 	startingPoint: '',
 	endingPoint: '',
 	entries: [],
 	fuelPerHour: 8,
-	speed: 90
-});
+	speed: 90,
+	totalDistance: 0,
+	totalTime: 0,
+	totalFuel: 0
+};
 
-export function addEntry(entry: Entry) {
-	console.log(entry);
-	info.update((i) => ({ ...i, entries: [...i.entries, entry] }));
+export const info: Writable<Info> = writable(defaultInfo);
+
+export function addEntry(entry: Entry): void {
+	info.update((i) => ({
+		...i,
+		entries: [...i.entries, entry],
+		totalDistance: i.totalDistance + entry.distance,
+		totalTime: i.totalTime + entry.time,
+		totalFuel: i.totalFuel + entry.fuel
+	}));
+}
+
+export function restart(): void {
+	info.set(defaultInfo);
 }

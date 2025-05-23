@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { t } from 'svelte-i18n';
 	import FormInput from './FormInput.svelte';
-	import { addEntry } from '$lib/stores/info';
+	import { addEntry, info } from '$lib/stores/info';
+	import { next } from '$lib/stores/stages';
 
 	let entryNum: number = $state(1);
 
@@ -10,12 +11,12 @@
 	let heading: number = $state(NaN);
 	let altitude: number = $state(NaN);
 	let distance: number = $state(NaN);
-	let identifierPoints: string[] = $state([]);
-	let story: string | undefined = $state();
+	let identifierPoints: string = $state('');
+	let story: string = $state('');
 
 	function handleEntry(): void {
-		const time = distance / 90;
-		const fuel = time * 8;
+		const time = distance / $info.speed;
+		const fuel = time * $info.fuelPerHour;
 		addEntry({ from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
 		entryNum++;
 		from = to;
@@ -23,13 +24,25 @@
 		heading = NaN;
 		altitude = NaN;
 		distance = NaN;
-		identifierPoints = [];
+		identifierPoints = '';
 		story = '';
+	}
+
+	function handleFinish(): void {
+		let incomplete = to.length > 0;
+		incomplete = incomplete || !isNaN(heading);
+		incomplete = incomplete || !isNaN(altitude);
+		incomplete = incomplete || !isNaN(distance);
+		incomplete = incomplete || identifierPoints.length > 0;
+		incomplete = incomplete || story.length > 0;
+		if (!incomplete) next();
+		else if (confirm($t('incomplete_message'))) next();
 	}
 </script>
 
 <form
-	class="card bg-base-300 max-w-200"
+	class="card bg-base-300 min-w-100"
+	dir="auto"
 	onsubmit={(e) => {
 		e.preventDefault();
 		handleEntry();
@@ -62,10 +75,17 @@
 				label={$t('entry_distance')}
 				required
 			></FormInput>
+			<FormInput bind:value={identifierPoints} label={$t('entry_identifier')}></FormInput>
 			<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
 		</div>
 		<div class="card-actions mt-2">
-			<button type="submit" class="btn btn-primary w-full">Add Entry</button>
+			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
+			<button
+				type="button"
+				disabled={$info.entries.length == 0}
+				onclick={handleFinish}
+				class="btn btn-neutral w-full">{$t('finish_entries')}</button
+			>
 		</div>
 	</div>
 </form>

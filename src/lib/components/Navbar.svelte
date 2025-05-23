@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SelectOption } from '$lib';
+	import { reset } from '$lib/stores/stages';
 	import LabelSelect from './LabelSelect.svelte';
 
 	const {
@@ -16,7 +17,7 @@
 
 <div class="navbar bg-primary text-primary-content shadow-sm">
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost text-xl">Flight Planner</a>
+		<button onclick={reset} class="btn btn-ghost text-xl">Flight Planner</button>
 	</div>
 	<div class="flex-none">
 		<LabelSelect

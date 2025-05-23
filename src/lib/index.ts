@@ -11,8 +11,8 @@ export type Entry = {
 	distance: number;
 	time: number;
 	fuel: number;
-	identifierPoints: string[];
-	story?: string;
+	identifierPoints: string;
+	story: string;
 };
 
 export type Info = {
@@ -23,4 +23,7 @@ export type Info = {
 	entries: Entry[];
 	fuelPerHour: number;
 	speed: number;
+	totalDistance: number;
+	totalTime: number;
+	totalFuel: number;
 };

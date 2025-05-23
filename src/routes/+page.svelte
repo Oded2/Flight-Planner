@@ -1,13 +1,11 @@
 <script lang="ts">
 	import Entries from '$lib/components/Entries.svelte';
+	import Table from '$lib/components/Table.svelte';
 	import Greeting from '$lib/components/Greeting.svelte';
 	import Questions from '$lib/components/Questions.svelte';
 	import StageContainer from '$lib/components/StageContainer.svelte';
-	import { back, next } from '$lib/stores/stages';
 </script>
 
-<!-- <button class="btn btn-primary btn-outline" onclick={next}>Stage Up</button>
-<button class="btn btn-primary btn-outline" onclick={back}>Stage Down</button> -->
 <StageContainer stageNumber={0}>
 	<Greeting></Greeting>
 </StageContainer>
@@ -16,6 +14,9 @@
 </StageContainer>
 <StageContainer stageNumber={2}>
 	<Entries></Entries>
+</StageContainer>
+<StageContainer stageNumber={3}>
+	<Table></Table>
 </StageContainer>
 
 <svelte:head><title>Flight Planner</title></svelte:head>
