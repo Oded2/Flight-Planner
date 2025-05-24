@@ -3,12 +3,17 @@
 	import { t } from '$lib/stores/localization';
 </script>
 
-<div dir="auto" class="card card-lg bg-primary text-primary-content mx-auto my-auto max-w-110 pb-2">
-	<div class="card-body">
-		<h2 class="card-title">{$t('welcome')}</h2>
-		<p>{$t('description')}</p>
-		<div class="card-actions justify-end">
-			<button onclick={next} class="btn">{$t('get_started')}</button>
+<div class="hero flex-1">
+	<div class="hero-content flex-col lg:flex-row" dir="auto">
+		<div class="rounded-lg bg-gray-800 shadow-2xl">
+			<img src="/images/logo.png" alt="Hero" class="max-w-sm" />
+		</div>
+		<div>
+			<h1 class="text-5xl font-bold">{$t('welcome')}</h1>
+			<p class="py-6">
+				{$t('description')}
+			</p>
+			<button onclick={next} class="btn btn-primary">{$t('get_started')}</button>
 		</div>
 	</div>
 </div>
