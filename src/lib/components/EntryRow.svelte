@@ -18,7 +18,6 @@
 		// omit "hh:" when h is zero
 		return h > 0 ? `${h}:${pad2(m)}:${pad2(s)}` : `${m}:${pad2(s)}`;
 	}
-	const timeFormatted = $derived(formatHour(entry.time));
 </script>
 
 <tr>
@@ -28,8 +27,13 @@
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
 	<td>{entry.altitude?.toLocaleString() ?? '-'}</td>
 	<td>{entry.distance.toLocaleString()}</td>
-	<td>{timeFormatted}</td>
-	<td>{entry.fuel.toFixed(1)}</td>
+	<td>{formatHour(entry.time)}</td>
+	<td
+		>{entry.fuel.toLocaleString(undefined, {
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 1
+		})}</td
+	>
 	<td dir="auto" class:text-start={entry.identifierPoints.includes(' ')}
 		>{entry.identifierPoints || '-'}</td
 	>
