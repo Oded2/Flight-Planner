@@ -16,7 +16,7 @@
 
 <div class="p-5 print:p-0" dir="auto">
 	<Table></Table>
-	<div class="mx-2 my-10">
+	<div class="mx-2 mt-10">
 		<div class="flex flex-col gap-1">
 			<span class="text-sm font-light italic">
 				{$t('table_disclaimer')
