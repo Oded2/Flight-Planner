@@ -30,8 +30,9 @@
     "entry_story": "Story",
     "add_entry": "Add Entry",
     "total": "Total",
-    "print": "Print",
-    "print_tip": "Tip: When printing, set the orientation to landscape.",
+    "print": "Print / Save as PDF",
+    "print_tip": "Tip: In the print menu, set the orientation to landscape.",
     "view": "View",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "table_disclaimer": "Assuming the aircraft cruises at %SPEED% knots and burns %FUEL% gallons of fuel per hour"
 }

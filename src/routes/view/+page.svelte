@@ -16,14 +16,21 @@
 
 <div class="p-5 print:p-0" dir="auto">
 	<Table></Table>
-	<div class="mx-2 my-10 flex flex-col gap-1 print:hidden">
-		<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
-		<span class="text-sm font-light italic">{$t('print_tip')}</span>
+	<div class="mx-2 my-10">
+		<span class="text-sm font-light italic"
+			>{$t('table_disclaimer')
+				.replace('%SPEED%', $info.speed.toLocaleString())
+				.replace('%FUEL%', $info.fuelPerHour.toLocaleString())}
+		</span>
+		<div class="mt-5 flex flex-col gap-1 print:hidden">
+			<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
+			<span class="text-sm font-light italic">{$t('print_tip')}</span>
+		</div>
 	</div>
 </div>
 
 <svelte:head>
-	<title
-		>{`${$info.startingPoint || $t('unknown')} ${$t('entry_to').toLocaleLowerCase()} ${$info.endingPoint || $t('unknown')}`}
+	<title>
+		{`${$info.startingPoint || $t('unknown')} ${$t('entry_to').toLocaleLowerCase()} ${$info.endingPoint || $t('unknown')}`}
 	</title>
 </svelte:head>
