@@ -18,7 +18,7 @@
 <div class="rounded-box border-base-content/5 bg-base-100 border">
 	<table class="table-zebra table text-center" dir="auto">
 		<caption class="mt-3 text-xl font-semibold" dir="auto">
-			{`${$info.startingPoint || $t('unknown')} ${$t('entry_to')} ${$info.endingPoint || $t('unknown')}`}
+			{`${$info.startingPoint || $t('unknown')} ${$t('entry_to').toLocaleLowerCase()} ${$info.endingPoint || $t('unknown')}`}
 		</caption>
 		<thead>
 			<tr>

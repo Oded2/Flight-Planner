@@ -18,5 +18,7 @@
 </div>
 
 <svelte:head>
-	<title>{`${$info.startingPoint} ${$t('entry_to')} ${$info.endingPoint}`}</title>
+	<title
+		>{`${$info.startingPoint || $t('unknown')} ${$t('entry_to').toLocaleLowerCase()} ${$info.endingPoint || $t('unknown')}`}
+	</title>
 </svelte:head>
