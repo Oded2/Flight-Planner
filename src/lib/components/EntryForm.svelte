@@ -2,7 +2,6 @@
 	import FormInput from './FormInput.svelte';
 	import { addEntry, info } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
-	import { addParams } from '$lib';
 
 	const lastIndex = $info.entries.length - 1;
 
@@ -23,6 +22,7 @@
 		identifierPoints = identifierPoints.trim();
 		story = story.trim();
 		addEntry({ from: from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
+		localStorage.setItem('info', JSON.stringify($info));
 		from = to;
 		to = '';
 		heading = undefined;
@@ -75,11 +75,7 @@
 		</div>
 		<div class="card-actions mt-2">
 			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
-			<a
-				href={addParams('/view', { info: JSON.stringify($info) })}
-				target="_blank"
-				class="btn btn-neutral w-full">{$t('view')}</a
-			>
+			<a href="/view" target="_blank" class="btn btn-neutral w-full">{$t('view')}</a>
 		</div>
 	</div>
 </form>

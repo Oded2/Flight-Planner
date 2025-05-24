@@ -26,11 +26,3 @@ export type Info = {
 	totalTime: number;
 	totalFuel: number;
 };
-
-export function addParams(link: string, params: Record<string, string>): string {
-	const searchParams = new URLSearchParams();
-	Object.entries(params).forEach(([key, value]) => {
-		searchParams.append(key, value);
-	});
-	return `${link}?${searchParams.toString()}`;
-}
