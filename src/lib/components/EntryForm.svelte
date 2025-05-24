@@ -52,6 +52,7 @@
 				inputType="number"
 				min={1}
 				max={360}
+				step={1}
 				label={$t('entry_heading')}
 			></FormInput>
 			<FormInput

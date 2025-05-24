@@ -2,6 +2,7 @@
 	import LabelInput from './LabelInput.svelte';
 	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
+	import { info } from '$lib/stores/info';
 </script>
 
 <form
@@ -19,13 +20,11 @@
 				label={$t('starting_point_question')}
 				placeholder={$t('starting_point_placeholder')}
 				param="startingPoint"
-				required
 			></LabelInput>
 			<LabelInput
 				label={$t('ending_point_question')}
 				placeholder={$t('ending_point_placeholder')}
 				param="endingPoint"
-				required
 			></LabelInput>
 			<LabelInput
 				label={$t('fuel_question')}
@@ -34,7 +33,7 @@
 				inputType="number"
 				required
 				min={0}
-				value={8}
+				value={$info.fuelPerHour}
 			></LabelInput>
 			<LabelInput
 				label={$t('speed_question')}
@@ -43,7 +42,7 @@
 				inputType="number"
 				required
 				min={1}
-				value={90}
+				value={$info.speed}
 			></LabelInput>
 		</div>
 		<div class="card-actions mt-2 justify-end">

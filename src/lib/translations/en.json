@@ -32,5 +32,6 @@
     "total": "Total",
     "print": "Print",
     "print_tip": "Tip: When printing, set the orientation to landscape.",
-    "view": "View"
+    "view": "View",
+    "unknown": "Unknown"
 }
