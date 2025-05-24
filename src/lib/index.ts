@@ -17,8 +17,8 @@ export type Entry = {
 };
 
 export type Info = {
-	startingPoint: string;
-	endingPoint: string;
+	title: string;
+	owner: string;
 	entries: Entry[];
 	fuelPerHour: number;
 	speed: number;

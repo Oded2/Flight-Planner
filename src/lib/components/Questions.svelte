@@ -16,15 +16,9 @@
 	<div class="card-body">
 		<h2 class="card-title mb-2">{$t('first_questions_label')}</h2>
 		<div class="flex flex-col gap-3">
-			<LabelInput
-				label={$t('starting_point_question')}
-				placeholder={$t('starting_point_placeholder')}
-				param="startingPoint"
+			<LabelInput label={$t('title_question')} placeholder={$t('title_placeholder')} param="title"
 			></LabelInput>
-			<LabelInput
-				label={$t('ending_point_question')}
-				placeholder={$t('ending_point_placeholder')}
-				param="endingPoint"
+			<LabelInput label={$t('owner_question')} placeholder={$t('owner_placeholder')} param="owner"
 			></LabelInput>
 			<LabelInput
 				label={$t('fuel_question')}

@@ -3,8 +3,8 @@ import { writable, type Writable } from 'svelte/store';
 import { setStage } from './stages';
 
 const defaultInfo: Info = {
-	startingPoint: '',
-	endingPoint: '',
+	title: '',
+	owner: '',
 	entries: [],
 	fuelPerHour: 8,
 	speed: 90,

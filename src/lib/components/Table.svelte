@@ -17,11 +17,11 @@
 
 <div class="rounded-box border-base-content/5 bg-base-100 border">
 	<table class="table-zebra table text-center" dir="auto">
-		<caption class="mt-3 text-xl font-semibold" dir="auto">
-			<!-- Placeholder text in order for dir="auto" to work properly -->
-			<span class="hidden">{$t('welcome')}</span>
-			{`${$info.startingPoint || $t('unknown')} ${$t('entry_to').toLocaleLowerCase()} ${$info.endingPoint || $t('unknown')}`}
-		</caption>
+		{#if $info.title}
+			<caption class="mt-3 text-xl font-semibold" dir="auto">
+				{$info.title}
+			</caption>
+		{/if}
 		<thead>
 			<tr>
 				<th>#</th>
