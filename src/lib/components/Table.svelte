@@ -38,9 +38,9 @@
 			{#each $info.entries as entry, index}
 				<EntryRow {entry} index={(index + 1).toLocaleString()}></EntryRow>
 			{/each}
-			{#if $info.entries.length > 1}
-				<EntryRow entry={totalEntry} index={$t('total')}></EntryRow>
-			{/if}
 		</tbody>
+		{#if $info.entries.length > 1}
+			<tfoot> <EntryRow entry={totalEntry} index={$t('total')}></EntryRow></tfoot>
+		{/if}
 	</table>
 </div>
