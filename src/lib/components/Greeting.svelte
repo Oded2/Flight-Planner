@@ -3,8 +3,7 @@
 	import { t } from '$lib/stores/localization';
 	import FileInput from './FileInput.svelte';
 	import { infoTypeGuard, localStorageInfo } from '$lib';
-	import { info, reset } from '$lib/stores/info';
-	import { get } from 'svelte/store';
+	import { info, reset, setInfo } from '$lib/stores/info';
 	import { onMount } from 'svelte';
 
 	const entriesExist = $derived($info.entries.length > 0);
@@ -17,8 +16,7 @@
 		try {
 			const json = JSON.parse(result);
 			if (infoTypeGuard(json)) {
-				info.set(json);
-				localStorage.setItem('info', JSON.stringify(get(info)));
+				setInfo(json);
 			} else alert($t('invalid_json'));
 		} catch {
 			alert($t('invalid_json'));

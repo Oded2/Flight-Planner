@@ -13,7 +13,6 @@
 	class="card card-lg bg-base-300 mx-auto my-auto w-200"
 	onsubmit={(e) => {
 		e.preventDefault();
-		localStorage.setItem('info', JSON.stringify(get(info)));
 		next();
 	}}
 >

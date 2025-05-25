@@ -59,7 +59,6 @@
 			editEntry(entry);
 			resetEditIndex();
 		}
-		localStorage.setItem('info', JSON.stringify(get(info)));
 		resetValues();
 	}
 </script>

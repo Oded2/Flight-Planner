@@ -12,8 +12,14 @@ const defaultInfo: Info = {
 export const info: Writable<Info> = writable(structuredClone(defaultInfo));
 export const editIndex: Writable<number> = writable(-1);
 
+export function setInfo(newInfo: Info) {
+	info.set(newInfo);
+	setStorage();
+}
+
 export function updateInfo<K extends keyof Info>(key: K, value: Info[K]) {
 	info.update((i) => ({ ...i, [key]: value }));
+	setStorage();
 }
 
 export function editEntry(entry: Entry) {
@@ -21,6 +27,7 @@ export function editEntry(entry: Entry) {
 		...i,
 		entries: i.entries.map((e, idx) => (idx === get(editIndex) ? entry : e))
 	}));
+	setStorage();
 }
 
 export function addEntry(entry: Entry): void {
@@ -28,13 +35,19 @@ export function addEntry(entry: Entry): void {
 		...i,
 		entries: [...i.entries, entry]
 	}));
+	setStorage();
 }
 
 export function reset(): void {
 	localStorage.removeItem('info');
 	info.set(structuredClone(defaultInfo));
+	setStorage();
 }
 
 export function resetEditIndex() {
 	editIndex.set(-1);
+}
+
+function setStorage(): void {
+	localStorage.setItem('info', JSON.stringify(get(info)));
 }
