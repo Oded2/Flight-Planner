@@ -4,8 +4,8 @@
 
 	const { entry, index }: { entry: Entry; index: string } = $props();
 
-	const time = entry.distance / $info.speed;
-	const fuel = time * $info.fuelPerHour;
+	const time = $derived(entry.distance / $info.speed);
+	const fuel = $derived(time * $info.fuelPerHour);
 
 	function formatHour(hoursDecimal: number): string {
 		// total seconds, rounded to nearest integer
@@ -38,8 +38,6 @@
 			maximumFractionDigits: 1
 		})}</td
 	>
-	<td dir="auto" class:text-start={entry.identifierPoints.includes(' ')}
-		>{entry.identifierPoints || '-'}</td
-	>
-	<td dir="auto" class:text-start={entry.story.includes(' ')}>{entry.story || '-'}</td>
+	<td>{entry.identifierPoints || '-'}</td>
+	<td>{entry.story || '-'}</td>
 </tr>
