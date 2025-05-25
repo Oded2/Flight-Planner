@@ -17,11 +17,17 @@
 		if (!distance || !altitude) return;
 		const time = distance / $info.speed;
 		const fuel = time * $info.fuelPerHour;
-		from = from.trim();
-		to = to.trim();
-		identifierPoints = identifierPoints.trim();
-		story = story.trim();
-		addEntry({ from: from, to, heading, altitude, distance, identifierPoints, story, time, fuel });
+		addEntry({
+			from: from.trim(),
+			to: to.trim(),
+			heading,
+			altitude,
+			distance,
+			identifierPoints: identifierPoints.trim(),
+			story: story.trim(),
+			time,
+			fuel
+		});
 		localStorage.setItem('info', JSON.stringify($info));
 		from = to;
 		to = '';
