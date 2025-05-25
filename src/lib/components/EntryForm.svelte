@@ -7,7 +7,7 @@
 
 	const lastIndex = $info.entries.length - 1;
 
-	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to);
+	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex].to);
 	let to: string = $state('');
 	let heading: number | undefined = $state();
 	let altitude: number | undefined = $state();
