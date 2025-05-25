@@ -1,23 +1,48 @@
 <script lang="ts">
 	import FormInput from './FormInput.svelte';
-	import { addEntry, info } from '$lib/stores/info';
+	import { addEntry, editEntry, editIndex, info, resetEditIndex } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
 	import { back } from '$lib/stores/stages';
 	import { get } from 'svelte/store';
+	import type { Entry } from '$lib';
 
 	const lastIndex = $info.entries.length - 1;
 
-	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex].to);
+	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to ?? '');
 	let to: string = $state('');
-	let heading: number | undefined = $state();
-	let altitude: number | undefined = $state();
-	let distance: number | undefined = $state();
+	let rawHeading: string = $state('');
+	const heading: number | undefined = $derived(rawHeading ? +rawHeading : undefined);
+	let rawAltitude: string = $state('');
+	const altitude: number | undefined = $derived(rawAltitude ? +rawAltitude : undefined);
+	let rawDistance: string = $state('');
+	const distance: number | undefined = $derived(rawDistance ? +rawDistance : undefined);
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 
+	$effect(() => {
+		const index = $editIndex;
+		if (index != -1) {
+			const entry = get(info).entries[index];
+			from = entry.from;
+			to = entry.to;
+			rawHeading = entry.heading?.toString() ?? '';
+			rawAltitude = entry.altitude?.toString() ?? '';
+			rawDistance = entry.distance.toString() ?? '';
+		}
+	});
+
+	function resetValues(): void {
+		from = get(info).entries.at(-1)?.to ?? '';
+		to = '';
+		rawHeading = '';
+		rawDistance = '';
+		identifierPoints = '';
+		story = '';
+	}
+
 	function handleEntry(): void {
-		if (!distance || !altitude) return;
-		addEntry({
+		if (!distance) return;
+		const entry: Entry = {
 			from: from.trim(),
 			to: to.trim(),
 			heading,
@@ -25,19 +50,21 @@
 			distance,
 			identifierPoints: identifierPoints.trim(),
 			story: story.trim()
-		});
+		};
+		if (get(editIndex) == -1) {
+			addEntry(entry);
+		} else {
+			editEntry(entry);
+			resetEditIndex();
+		}
 		localStorage.setItem('info', JSON.stringify(get(info)));
-		from = to;
-		to = '';
-		heading = undefined;
-		distance = undefined;
-		identifierPoints = '';
-		story = '';
+		resetValues();
 	}
 </script>
 
 <form
-	class="card bg-base-300 min-w-100"
+	class="card bg-base-300 outline-info/50 m-1 min-w-100 transition-none"
+	class:outline={$editIndex != -1}
 	dir="auto"
 	onsubmit={(e) => {
 		e.preventDefault();
@@ -47,17 +74,30 @@
 	<div class="card-body">
 		<div class="mb-2">
 			<h2 class="card-title">
-				{`${$t('entries_label')} ${($info.entries.length + 1).toLocaleString()}`}
+				{`${$t('entries_label')} ${(($editIndex == -1 ? $info.entries.length : $editIndex) + 1).toLocaleString()}`}
 			</h2>
-			<button type="button" onclick={back} class="me-auto cursor-pointer font-light underline"
-				>{$t('back')}</button
-			>
+			{#if $editIndex == -1}
+				<button type="button" onclick={back} class="me-auto cursor-pointer font-light underline">
+					{$t('back')}
+				</button>
+			{:else}
+				<button
+					type="button"
+					onclick={() => {
+						resetEditIndex();
+						resetValues();
+					}}
+					class="me-auto cursor-pointer font-light underline"
+				>
+					{$t('cancel')}
+				</button>
+			{/if}
 		</div>
 		<div class="flex flex-col gap-3">
 			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
 			<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>
 			<FormInput
-				bind:value={heading}
+				bind:value={rawHeading}
 				inputType="number"
 				min={1}
 				max={360}
@@ -65,14 +105,14 @@
 				label={$t('entry_heading')}
 			></FormInput>
 			<FormInput
-				bind:value={altitude}
+				bind:value={rawAltitude}
 				inputType="number"
 				min={0}
 				label={$t('entry_altitude')}
 				required
 			></FormInput>
 			<FormInput
-				bind:value={distance}
+				bind:value={rawDistance}
 				inputType="number"
 				min={0.001}
 				step={0.001}
@@ -83,7 +123,9 @@
 			<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
 		</div>
 		<div class="card-actions mt-2">
-			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
+			<button type="submit" class="btn btn-primary w-full"
+				>{$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}</button
+			>
 			<a
 				href="/view"
 				target="_blank"

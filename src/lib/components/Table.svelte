@@ -4,6 +4,8 @@
 	import type { Entry } from '$lib';
 	import { t } from '$lib/stores/localization';
 
+	const { editable }: { editable?: boolean } = $props();
+
 	const totalEntry: Entry = $derived({
 		from: '-',
 		to: '-',
@@ -32,15 +34,18 @@
 				<th>{$t('entry_fuel')}</th>
 				<th>{$t('entry_identifier')}</th>
 				<th>{$t('entry_story')}</th>
+				{#if editable}
+					<th>{$t('options')}</th>
+				{/if}
 			</tr>
 		</thead>
 		<tbody>
 			{#each $info.entries as entry, index}
-				<EntryRow {entry} index={(index + 1).toLocaleString()}></EntryRow>
+				<EntryRow {entry} {index} {editable}></EntryRow>
 			{/each}
 		</tbody>
 		{#if $info.entries.length > 1}
-			<tfoot> <EntryRow entry={totalEntry} index={$t('total')}></EntryRow></tfoot>
+			<tfoot> <EntryRow entry={totalEntry} index={-1} {editable}></EntryRow></tfoot>
 		{/if}
 	</table>
 </div>

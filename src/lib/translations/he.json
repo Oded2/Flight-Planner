@@ -32,5 +32,9 @@
     "view": "תצוגה",
     "table_disclaimer": "בהנחה שהמטוס טס במהירות של %SPEED% קשר ושרף %FUEL% גלונים של דלק לשעה",
     "created_by": "נוצר על ידי: %OWNER%",
-    "untitled": "ללא כותרת"
+    "untitled": "ללא כותרת",
+    "options": "אפשרויות",
+    "edit": "עריכה",
+    "cancel": "ביטול",
+    "edit_entry": "עריכת רשומה"
 }

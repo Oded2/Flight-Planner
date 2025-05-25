@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type { Entry } from '$lib';
-	import { info } from '$lib/stores/info';
+	import { editIndex, info } from '$lib/stores/info';
+	import { t } from '$lib/stores/localization';
 
-	const { entry, index }: { entry: Entry; index: string } = $props();
+	const { entry, index, editable }: { entry: Entry; index: number; editable?: boolean } = $props();
 
 	const time = $derived(entry.distance / $info.speed);
 	const fuel = $derived(time * $info.fuelPerHour);
@@ -25,7 +26,7 @@
 </script>
 
 <tr>
-	<td>{index}</td>
+	<td>{index == -1 ? 'Total' : (index + 1).toLocaleString()}</td>
 	<td>{entry.from}</td>
 	<td>{entry.to}</td>
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
@@ -36,8 +37,19 @@
 		>{fuel.toLocaleString(undefined, {
 			minimumFractionDigits: 0,
 			maximumFractionDigits: 1
-		})}</td
-	>
+		})}
+	</td>
 	<td>{entry.identifierPoints || '-'}</td>
 	<td>{entry.story || '-'}</td>
+	{#if editable}
+		<td>
+			{#if index != -1}
+				<button type="button" class="cursor-pointer underline" onclick={() => editIndex.set(index)}
+					>{$t('edit')}</button
+				>
+			{:else}
+				-
+			{/if}
+		</td>
+	{/if}
 </tr>

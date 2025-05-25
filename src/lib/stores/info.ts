@@ -1,5 +1,5 @@
 import type { Entry, Info } from '$lib';
-import { writable, type Writable } from 'svelte/store';
+import { get, writable, type Writable } from 'svelte/store';
 import { setStage } from './stages';
 
 const defaultInfo: Info = {
@@ -14,9 +14,17 @@ const defaultInfo: Info = {
 };
 
 export const info: Writable<Info> = writable(structuredClone(defaultInfo));
+export const editIndex: Writable<number> = writable(-1);
 
 export function updateInfo<K extends keyof Info>(key: K, value: Info[K]) {
 	info.update((i) => ({ ...i, [key]: value }));
+}
+
+export function editEntry(entry: Entry) {
+	info.update((i) => ({
+		...i,
+		entries: i.entries.map((e, idx) => (idx === get(editIndex) ? entry : e))
+	}));
 }
 
 export function addEntry(entry: Entry): void {
@@ -29,4 +37,8 @@ export function addEntry(entry: Entry): void {
 export function reset(): void {
 	setStage(0);
 	info.set(structuredClone(defaultInfo));
+}
+
+export function resetEditIndex() {
+	editIndex.set(-1);
 }

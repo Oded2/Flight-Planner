@@ -32,5 +32,9 @@
     "view": "View",
     "table_disclaimer": "Assuming the aircraft cruises at %SPEED% knots and burns %FUEL% gallons of fuel per hour",
     "created_by": "Created by: %OWNER%",
-    "untitled": "Untitled"
+    "untitled": "Untitled",
+    "options": "Options",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "edit_entry": "Edit Entry"
 }
