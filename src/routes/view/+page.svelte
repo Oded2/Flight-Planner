@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DownloadJson from '$lib/components/DownloadJSON.svelte';
 	import Table from '$lib/components/Table.svelte';
 	import { info } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
@@ -30,6 +31,9 @@
 		<div class="mt-5 flex flex-col gap-1 print:hidden">
 			<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
 			<span class="text-sm font-light italic">{$t('print_tip')}</span>
+			<DownloadJson className="btn btn-neutral btn-outline me-auto mt-2" data={$info}>
+				{$t('save_as_json')}
+			</DownloadJson>
 		</div>
 	</div>
 </div>
