@@ -81,7 +81,12 @@
 		</div>
 		<div class="card-actions mt-2">
 			<button type="submit" class="btn btn-primary w-full">{$t('add_entry')}</button>
-			<a href="/view" target="_blank" class="btn btn-neutral w-full">{$t('view')}</a>
+			<a
+				href="/view"
+				target="_blank"
+				class="btn btn-neutral w-full"
+				class:btn-disabled={$info.entries.length == 0}>{$t('view')}</a
+			>
 		</div>
 	</div>
 </form>
