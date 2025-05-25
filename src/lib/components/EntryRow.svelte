@@ -26,7 +26,7 @@
 </script>
 
 <tr>
-	<td>{index == -1 ? 'Total' : (index + 1).toLocaleString()}</td>
+	<td>{index == -1 ? $t('total') : (index + 1).toLocaleString()}</td>
 	<td>{entry.from}</td>
 	<td>{entry.to}</td>
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
