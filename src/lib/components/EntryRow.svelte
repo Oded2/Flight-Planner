@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { Entry } from '$lib';
+	import { info } from '$lib/stores/info';
 
 	const { entry, index }: { entry: Entry; index: string } = $props();
+
+	const time = entry.distance / $info.speed;
+	const fuel = time * $info.fuelPerHour;
 
 	function formatHour(hoursDecimal: number): string {
 		// total seconds, rounded to nearest integer
@@ -27,9 +31,9 @@
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
 	<td>{entry.altitude?.toLocaleString() ?? '-'}</td>
 	<td>{entry.distance.toLocaleString()}</td>
-	<td>{formatHour(entry.time)}</td>
+	<td>{formatHour(time)}</td>
 	<td
-		>{entry.fuel.toLocaleString(undefined, {
+		>{fuel.toLocaleString(undefined, {
 			minimumFractionDigits: 0,
 			maximumFractionDigits: 1
 		})}</td

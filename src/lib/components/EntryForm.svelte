@@ -15,8 +15,6 @@
 
 	function handleEntry(): void {
 		if (!distance || !altitude) return;
-		const time = distance / $info.speed;
-		const fuel = time * $info.fuelPerHour;
 		addEntry({
 			from: from.trim(),
 			to: to.trim(),
@@ -24,9 +22,7 @@
 			altitude,
 			distance,
 			identifierPoints: identifierPoints.trim(),
-			story: story.trim(),
-			time,
-			fuel
+			story: story.trim()
 		});
 		localStorage.setItem('info', JSON.stringify($info));
 		from = to;

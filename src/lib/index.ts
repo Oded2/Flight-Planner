@@ -10,8 +10,6 @@ export type Entry = {
 	heading?: number;
 	altitude?: number;
 	distance: number;
-	time: number;
-	fuel: number;
 	identifierPoints: string;
 	story: string;
 };

@@ -22,10 +22,7 @@ export function updateInfo<K extends keyof Info>(key: K, value: Info[K]) {
 export function addEntry(entry: Entry): void {
 	info.update((i) => ({
 		...i,
-		entries: [...i.entries, entry],
-		totalDistance: i.totalDistance + entry.distance,
-		totalTime: i.totalTime + entry.time,
-		totalFuel: i.totalFuel + entry.fuel
+		entries: [...i.entries, entry]
 	}));
 }
 

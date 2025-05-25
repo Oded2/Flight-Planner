@@ -7,11 +7,9 @@
 	const totalEntry: Entry = $derived({
 		from: '-',
 		to: '-',
-		distance: $info.totalDistance,
-		time: $info.totalTime,
-		fuel: $info.totalFuel,
-		identifierPoints: '',
-		story: ''
+		distance: $info.entries.reduce((acc, item) => (acc += item.distance), 0),
+		identifierPoints: '-',
+		story: '-'
 	});
 </script>
 
