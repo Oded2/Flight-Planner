@@ -7,6 +7,7 @@
 	import { themeChange } from 'theme-change';
 	import { page } from '$app/state';
 	import { setStage } from '$lib/stores/stages';
+	import { PUBLIC_REPO_LINK } from '$env/static/public';
 
 	const isHome = !page.url.pathname.includes('view');
 
@@ -39,22 +40,26 @@
 </script>
 
 <div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
-	<div class="flex-1">
+	<div class="flex flex-1 gap-1">
 		{#if isHome}
 			<button onclick={() => setStage(0)} class="btn btn-ghost text-xl">Flight Planner</button>
 		{:else}
 			<a href="/" class="btn btn-ghost text-xl">Flight Planner</a>
 		{/if}
+		<a href={PUBLIC_REPO_LINK} class="btn btn-neutral" aria-label="Github Link">
+			<i class="fa-brands fa-github text-2xl"></i>
+		</a>
 	</div>
 	<div class="flex gap-4">
 		<LabelSelect
 			onchange={(e) => handleLanguageChange(e.currentTarget.value)}
-			label="Language"
 			options={languages}
 			selectedOption={originalLocale}
-		></LabelSelect>
+		>
+			Language
+		</LabelSelect>
 		{#if isHome}
-			<LabelSelect themes label="Theme" options={themes}></LabelSelect>
+			<LabelSelect themes options={themes}>Theme</LabelSelect>
 		{/if}
 	</div>
 </div>
