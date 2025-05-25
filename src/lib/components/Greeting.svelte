@@ -5,7 +5,7 @@
 
 <div class="hero flex-1">
 	<div class="hero-content flex-col lg:flex-row" dir="auto">
-		<div class="rounded-lg bg-gray-800 shadow-2xl">
+		<div class="rounded-lg bg-gray-800 shadow-2xl transition-transform hover:-translate-y-1">
 			<img src="/images/logo.png" alt="Hero" class="max-w-sm" />
 		</div>
 		<div>
