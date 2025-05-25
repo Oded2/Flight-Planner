@@ -36,5 +36,7 @@
     "options": "אפשרויות",
     "edit": "עריכה",
     "cancel": "ביטול",
-    "edit_entry": "עריכת רשומה"
+    "edit_entry": "עריכת רשומה",
+    "upload_json": "העלאה מקובץ JSON",
+    "no_file": "לא נבחר קובץ"
 }

@@ -1,16 +1,12 @@
 import type { Entry, Info } from '$lib';
 import { get, writable, type Writable } from 'svelte/store';
-import { setStage } from './stages';
 
 const defaultInfo: Info = {
 	title: '',
 	owner: '',
 	entries: [],
 	fuelPerHour: 8,
-	speed: 90,
-	totalDistance: 0,
-	totalTime: 0,
-	totalFuel: 0
+	speed: 90
 };
 
 export const info: Writable<Info> = writable(structuredClone(defaultInfo));
@@ -35,7 +31,7 @@ export function addEntry(entry: Entry): void {
 }
 
 export function reset(): void {
-	setStage(0);
+	localStorage.removeItem('info');
 	info.set(structuredClone(defaultInfo));
 }
 

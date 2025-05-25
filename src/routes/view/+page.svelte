@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localStorageInfo } from '$lib';
 	import DownloadJson from '$lib/components/DownloadJSON.svelte';
 	import Table from '$lib/components/Table.svelte';
 	import { info } from '$lib/stores/info';
@@ -7,8 +8,7 @@
 
 	onMount(() => {
 		document.documentElement.setAttribute('data-theme', 'light');
-		const localStorageInfo = localStorage.getItem('info');
-		if (localStorageInfo) info.set(JSON.parse(localStorageInfo));
+		localStorageInfo();
 	});
 </script>
 

@@ -36,5 +36,11 @@
     "options": "Options",
     "edit": "Edit",
     "cancel": "Cancel",
-    "edit_entry": "Edit Entry"
+    "edit_entry": "Edit Entry",
+    "upload_json": "Upload from JSON",
+    "no_file": "No file selected",
+    "invalid_json": "Invalid JSON",
+    "view_current": "View current flight plan",
+    "modify_plan": "Modify Flight Plan",
+    "reset_plan": "Reset flight plan"
 }

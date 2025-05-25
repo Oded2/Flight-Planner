@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { SelectOption } from '$lib';
-	import { reset } from '$lib/stores/info';
 	import { get } from 'svelte/store';
 	import LabelSelect from './LabelSelect.svelte';
 	import { locale } from '$lib/stores/localization';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import { page } from '$app/state';
+	import { setStage } from '$lib/stores/stages';
 
 	const isHome = !page.url.pathname.includes('view');
 
@@ -41,7 +41,7 @@
 <div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
 	<div class="flex-1">
 		{#if isHome}
-			<button onclick={reset} class="btn btn-ghost text-xl">Flight Planner</button>
+			<button onclick={() => setStage(0)} class="btn btn-ghost text-xl">Flight Planner</button>
 		{:else}
 			<a href="/" class="btn btn-ghost text-xl">Flight Planner</a>
 		{/if}

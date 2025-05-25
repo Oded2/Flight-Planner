@@ -1,3 +1,5 @@
+import { info } from './stores/info';
+
 export type SelectOption = {
 	code: string;
 	label: string;
@@ -20,7 +22,39 @@ export type Info = {
 	entries: Entry[];
 	fuelPerHour: number;
 	speed: number;
-	totalDistance: number;
-	totalTime: number;
-	totalFuel: number;
 };
+
+export function localStorageInfo(): void {
+	const localStorageInfo = localStorage.getItem('info');
+	if (localStorageInfo) {
+		const infoJson = JSON.parse(localStorageInfo);
+		if (infoTypeGuard(infoJson)) info.set(infoJson);
+	}
+}
+
+function entryTypeGuard(obj: any): obj is Entry {
+	return (
+		obj &&
+		typeof obj === 'object' &&
+		typeof obj.from === 'string' &&
+		typeof obj.to === 'string' &&
+		(obj.heading === undefined || typeof obj.heading === 'number') &&
+		(obj.altitude === undefined || typeof obj.altitude === 'number') &&
+		typeof obj.distance === 'number' &&
+		typeof obj.identifierPoints === 'string' &&
+		typeof obj.story === 'string'
+	);
+}
+
+export function infoTypeGuard(obj: any): obj is Info {
+	return (
+		obj &&
+		typeof obj === 'object' &&
+		typeof obj.title === 'string' &&
+		typeof obj.owner === 'string' &&
+		Array.isArray(obj.entries) &&
+		obj.entries.every(entryTypeGuard) &&
+		typeof obj.fuelPerHour === 'number' &&
+		typeof obj.speed === 'number'
+	);
+}

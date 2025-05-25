@@ -1,6 +1,29 @@
 <script lang="ts">
 	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
+	import FileInput from './FileInput.svelte';
+	import { infoTypeGuard, localStorageInfo } from '$lib';
+	import { info, reset } from '$lib/stores/info';
+	import { get } from 'svelte/store';
+	import { onMount } from 'svelte';
+
+	const entriesExist = $derived($info.entries.length > 0);
+
+	let reloadKey = $state(0);
+
+	onMount(localStorageInfo);
+
+	function handleUpload(result: string) {
+		try {
+			const json = JSON.parse(result);
+			if (infoTypeGuard(json)) {
+				info.set(json);
+				localStorage.setItem('info', JSON.stringify(get(info)));
+			} else alert($t('invalid_json'));
+		} catch {
+			alert($t('invalid_json'));
+		}
+	}
 </script>
 
 <div class="hero flex-1">
@@ -13,7 +36,24 @@
 			<p class="py-6">
 				{$t('description')}
 			</p>
-			<button onclick={next} class="btn btn-primary">{$t('get_started')}</button>
+			<div class="flex gap-4">
+				<button onclick={next} class="btn btn-primary"
+					>{entriesExist ? $t('modify_plan') : $t('get_started')}</button
+				>
+				{#key reloadKey}
+					<FileInput label={$t('upload_json')} onChange={handleUpload}></FileInput>
+				{/key}
+				{#if entriesExist}
+					<a href="/view" target="_blank" class="btn btn-neutral">{$t('view_current')}</a>
+					<button
+						onclick={() => {
+							reloadKey++;
+							reset();
+						}}
+						class="btn btn-error btn-outline">{$t('reset_plan')}</button
+					>
+				{/if}
+			</div>
 		</div>
 	</div>
 </div>
