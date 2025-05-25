@@ -2,6 +2,8 @@
 	import FormInput from './FormInput.svelte';
 	import { addEntry, info } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
+	import { back } from '$lib/stores/stages';
+	import { get } from 'svelte/store';
 
 	const lastIndex = $info.entries.length - 1;
 
@@ -24,7 +26,7 @@
 			identifierPoints: identifierPoints.trim(),
 			story: story.trim()
 		});
-		localStorage.setItem('info', JSON.stringify($info));
+		localStorage.setItem('info', JSON.stringify(get(info)));
 		from = to;
 		to = '';
 		heading = undefined;
@@ -43,9 +45,14 @@
 	}}
 >
 	<div class="card-body">
-		<h2 class="card-title mb-2">
-			{`${$t('entries_label')} ${($info.entries.length + 1).toLocaleString()}`}
-		</h2>
+		<div class="mb-2">
+			<h2 class="card-title">
+				{`${$t('entries_label')} ${($info.entries.length + 1).toLocaleString()}`}
+			</h2>
+			<button type="button" onclick={back} class="me-auto cursor-pointer font-light underline"
+				>{$t('back')}</button
+			>
+		</div>
 		<div class="flex flex-col gap-3">
 			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
 			<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>

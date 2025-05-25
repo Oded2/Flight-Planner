@@ -8,10 +8,7 @@
 	onMount(() => {
 		document.documentElement.setAttribute('data-theme', 'light');
 		const localStorageInfo = localStorage.getItem('info');
-		if (localStorageInfo) {
-			console.log('here');
-			info.set(JSON.parse(localStorageInfo));
-		}
+		if (localStorageInfo) info.set(JSON.parse(localStorageInfo));
 	});
 </script>
 

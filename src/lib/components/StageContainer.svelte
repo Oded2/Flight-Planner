@@ -5,9 +5,8 @@
 	const { stageNumber, children }: { stageNumber: number; children: Snippet } = $props();
 </script>
 
-<div
-	class="container mx-auto my-10 flex flex-1 flex-col print:my-0 print:max-w-full"
-	class:hidden={$stage != stageNumber}
->
-	{@render children()}
-</div>
+{#if $stage == stageNumber}
+	<div class="container mx-auto my-10 flex flex-1 flex-col print:my-0 print:max-w-full">
+		{@render children()}
+	</div>
+{/if}
