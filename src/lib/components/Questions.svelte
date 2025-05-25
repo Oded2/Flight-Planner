@@ -1,8 +1,8 @@
 <script lang="ts">
-	import LabelInput from './LabelInput.svelte';
 	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
 	import { info } from '$lib/stores/info';
+	import FormInput from './FormInput.svelte';
 </script>
 
 <form
@@ -16,28 +16,32 @@
 	<div class="card-body">
 		<h2 class="card-title mb-2">{$t('first_questions_label')}</h2>
 		<div class="flex flex-col gap-3">
-			<LabelInput label={$t('title_question')} placeholder={$t('title_placeholder')} param="title"
-			></LabelInput>
-			<LabelInput label={$t('owner_question')} placeholder={$t('owner_placeholder')} param="owner"
-			></LabelInput>
-			<LabelInput
+			<FormInput
+				label={$t('title_question')}
+				placeholder={$t('title_placeholder')}
+				bind:value={$info.title}
+			></FormInput>
+			<FormInput
+				label={$t('owner_question')}
+				placeholder={$t('owner_placeholder')}
+				bind:value={$info.owner}
+			></FormInput>
+			<FormInput
 				label={$t('fuel_question')}
 				placeholder={$t('fuel_placeholder')}
-				param="fuelPerHour"
 				inputType="number"
 				required
 				min={0}
-				value={$info.fuelPerHour}
-			></LabelInput>
-			<LabelInput
+				bind:value={$info.fuelPerHour}
+			></FormInput>
+			<FormInput
 				label={$t('speed_question')}
 				placeholder={$t('speed_placeholder')}
-				param="speed"
 				inputType="number"
 				required
 				min={1}
-				value={$info.speed}
-			></LabelInput>
+				bind:value={$info.speed}
+			></FormInput>
 		</div>
 		<div class="card-actions mt-2 justify-end">
 			<button type="submit" class="btn btn-primary">{$t('next')}</button>

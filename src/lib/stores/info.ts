@@ -13,7 +13,7 @@ const defaultInfo: Info = {
 	totalFuel: 0
 };
 
-export const info: Writable<Info> = writable(defaultInfo);
+export const info: Writable<Info> = writable(structuredClone(defaultInfo));
 
 export function addEntry(entry: Entry): void {
 	info.update((i) => ({
@@ -27,5 +27,5 @@ export function addEntry(entry: Entry): void {
 
 export function reset(): void {
 	setStage(0);
-	info.set(defaultInfo);
+	info.set(structuredClone(defaultInfo));
 }
