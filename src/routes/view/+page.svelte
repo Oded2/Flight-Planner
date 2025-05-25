@@ -29,7 +29,7 @@
 			{/if}
 		</div>
 		<div class="mt-5 flex flex-col gap-1 print:hidden">
-			<div class="flex flex-col">
+			<div class="flex flex-col gap-1">
 				<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
 				<span class="text-sm font-light italic">{$t('print_tip')}</span>
 			</div>
