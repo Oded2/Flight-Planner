@@ -38,5 +38,9 @@
     "cancel": "ביטול",
     "edit_entry": "עריכת רשומה",
     "upload_json": "העלאה מקובץ JSON",
-    "no_file": "לא נבחר קובץ"
+    "no_file": "לא נבחר קובץ",
+    "invalid_json": "JSON לא תקין",
+    "view_current": "הצג את תוכנית הטיסה הנוכחית",
+    "modify_plan": "עריכת תוכנית טיסה",
+    "reset_plan": "איפוס תוכנית הטיסה"
 }
