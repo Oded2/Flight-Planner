@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
-	import { info } from '$lib/stores/info';
+	import { info, updateInfo } from '$lib/stores/info';
 	import FormInput from './FormInput.svelte';
+	import { get } from 'svelte/store';
+
+	const currentInfo = get(info);
 </script>
 
 <form
@@ -19,12 +22,14 @@
 			<FormInput
 				label={$t('title_question')}
 				placeholder={$t('title_placeholder')}
-				bind:value={$info.title}
+				value={currentInfo.title}
+				onchange={(e) => updateInfo('title', e.currentTarget.value.trim())}
 			></FormInput>
 			<FormInput
 				label={$t('owner_question')}
 				placeholder={$t('owner_placeholder')}
-				bind:value={$info.owner}
+				value={currentInfo.owner}
+				onchange={(e) => updateInfo('owner', e.currentTarget.value.trim())}
 			></FormInput>
 			<FormInput
 				label={$t('fuel_question')}
@@ -32,7 +37,8 @@
 				inputType="number"
 				required
 				min={0}
-				bind:value={$info.fuelPerHour}
+				value={currentInfo.fuelPerHour}
+				onchange={(e) => updateInfo('fuelPerHour', e.currentTarget.valueAsNumber)}
 			></FormInput>
 			<FormInput
 				label={$t('speed_question')}
@@ -40,7 +46,8 @@
 				inputType="number"
 				required
 				min={1}
-				bind:value={$info.speed}
+				value={currentInfo.speed}
+				onchange={(e) => updateInfo('speed', e.currentTarget.valueAsNumber)}
 			></FormInput>
 		</div>
 		<div class="card-actions mt-2 justify-end">

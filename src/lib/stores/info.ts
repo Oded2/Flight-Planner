@@ -15,6 +15,10 @@ const defaultInfo: Info = {
 
 export const info: Writable<Info> = writable(structuredClone(defaultInfo));
 
+export function updateInfo<K extends keyof Info>(key: K, value: Info[K]) {
+	info.update((i) => ({ ...i, [key]: value }));
+}
+
 export function addEntry(entry: Entry): void {
 	info.update((i) => ({
 		...i,
