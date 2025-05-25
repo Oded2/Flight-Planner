@@ -28,6 +28,8 @@
 			rawHeading = entry.heading?.toString() ?? '';
 			rawAltitude = entry.altitude?.toString() ?? '';
 			rawDistance = entry.distance.toString() ?? '';
+			identifierPoints = entry.identifierPoints;
+			story = entry.story;
 		}
 	});
 
