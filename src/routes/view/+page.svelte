@@ -29,8 +29,10 @@
 			{/if}
 		</div>
 		<div class="mt-5 flex flex-col gap-1 print:hidden">
-			<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
-			<span class="text-sm font-light italic">{$t('print_tip')}</span>
+			<div class="flex flex-col">
+				<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
+				<span class="text-sm font-light italic">{$t('print_tip')}</span>
+			</div>
 			<DownloadJson className="btn btn-neutral btn-outline me-auto mt-2" data={$info}>
 				{$t('save_as_json')}
 			</DownloadJson>
