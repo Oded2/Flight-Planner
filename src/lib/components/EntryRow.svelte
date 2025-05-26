@@ -38,12 +38,13 @@
 	{#if editable}
 		<td>
 			{#if index != -1}
-				<div class="flex flex-col gap-0.5">
+				<div class="flex gap-0.5">
 					<button
 						type="button"
 						class="cursor-pointer underline"
 						onclick={() => editIndex.set(index)}>{$t('edit')}</button
 					>
+					<span>/</span>
 					<button
 						type="button"
 						class="cursor-pointer underline"
