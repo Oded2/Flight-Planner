@@ -3,10 +3,10 @@
 	import { t } from '$lib/stores/localization';
 	import FileInput from './FileInput.svelte';
 	import { infoTypeGuard, localStorageInfo } from '$lib';
-	import { info, reset, setInfo } from '$lib/stores/info';
+	import { defaultInfo, info, reset, setInfo } from '$lib/stores/info';
 	import { onMount } from 'svelte';
 
-	const entriesExist = $derived($info.entries.length > 0);
+	const infoExist: boolean = $derived(JSON.stringify($info) !== JSON.stringify(defaultInfo));
 
 	let reloadKey = $state(0);
 
@@ -36,12 +36,12 @@
 			</p>
 			<div class="flex gap-4">
 				<button onclick={next} class="btn btn-primary"
-					>{entriesExist ? $t('modify_plan') : $t('get_started')}</button
+					>{infoExist ? $t('modify_plan') : $t('get_started')}</button
 				>
 				{#key reloadKey}
 					<FileInput label={$t('upload_json')} onChange={handleUpload}></FileInput>
 				{/key}
-				{#if entriesExist}
+				{#if infoExist}
 					<a href="/view" target="_blank" class="btn btn-neutral">{$t('view_current')}</a>
 					<button
 						onclick={() => {

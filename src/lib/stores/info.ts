@@ -1,7 +1,7 @@
 import type { Entry, Info } from '$lib';
 import { get, writable, type Writable } from 'svelte/store';
 
-const defaultInfo: Info = {
+export const defaultInfo: Info = {
 	title: '',
 	owner: '',
 	entries: [],
@@ -30,6 +30,7 @@ export function updateInitialInfo(
 		fuelPerHour: fuelPerHour,
 		speed: speed
 	}));
+	setStorage();
 }
 
 export function editEntry(entry: Entry) {

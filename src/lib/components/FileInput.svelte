@@ -25,7 +25,7 @@
 	};
 </script>
 
-<div class="border-base-content/20 flex items-center gap-2 border-e pe-2">
+<div class="border-base-content/20 flex items-center gap-2 overflow-auto border-e pe-2">
 	<label class="btn btn-primary btn-outline cursor-pointer">
 		{label}
 		<input type="file" accept=".json" class="hidden" onchange={handleFileUpload} />
