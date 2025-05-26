@@ -17,9 +17,19 @@ export function setInfo(newInfo: Info) {
 	setStorage();
 }
 
-export function updateInfo<K extends keyof Info>(key: K, value: Info[K]) {
-	info.update((i) => ({ ...i, [key]: value }));
-	setStorage();
+export function updateInitialInfo(
+	title: string,
+	owner: string,
+	fuelPerHour: number,
+	speed: number
+) {
+	info.update((i) => ({
+		...i,
+		title: title,
+		owner: owner,
+		fuelPerHour: fuelPerHour,
+		speed: speed
+	}));
 }
 
 export function editEntry(entry: Entry) {

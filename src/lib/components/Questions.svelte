@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
-	import { info, updateInfo } from '$lib/stores/info';
+	import { info, updateInitialInfo } from '$lib/stores/info';
 	import FormInput from './FormInput.svelte';
 	import { get } from 'svelte/store';
 	import { inputToNum } from '$lib';
@@ -17,10 +17,7 @@
 
 	function handleSubmit() {
 		if (!fuelPerHour || !speed) return;
-		updateInfo('title', title.trim());
-		updateInfo('owner', owner.trim());
-		updateInfo('fuelPerHour', fuelPerHour);
-		updateInfo('speed', speed);
+		updateInitialInfo(title.trim(), owner.trim(), fuelPerHour, speed);
 		next();
 	}
 </script>
