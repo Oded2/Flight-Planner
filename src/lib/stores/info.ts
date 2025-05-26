@@ -1,4 +1,4 @@
-import { infoTypeGuard, type Entry, type Info } from '$lib';
+import { type Entry, type Info } from '$lib';
 import { get, writable, type Writable } from 'svelte/store';
 
 export const defaultInfo: Info = {
