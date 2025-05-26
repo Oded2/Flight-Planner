@@ -24,6 +24,10 @@ export type Info = {
 	speed: number;
 };
 
+export function inputToNum(rawInput: string): number | undefined {
+	return rawInput ? +rawInput : undefined;
+}
+
 export function localStorageInfo(): void {
 	const localStorageInfo = localStorage.getItem('info');
 	if (localStorageInfo) {

@@ -4,18 +4,18 @@
 	import { t } from '$lib/stores/localization';
 	import { back } from '$lib/stores/stages';
 	import { get } from 'svelte/store';
-	import type { Entry } from '$lib';
+	import { inputToNum, type Entry } from '$lib';
 
 	const lastIndex = $info.entries.length - 1;
 
 	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to ?? '');
 	let to: string = $state('');
 	let rawHeading: string = $state('');
-	const heading: number | undefined = $derived(rawHeading ? +rawHeading : undefined);
+	const heading: number | undefined = $derived(inputToNum(rawHeading));
 	let rawAltitude: string = $state('');
-	const altitude: number | undefined = $derived(rawAltitude ? +rawAltitude : undefined);
+	const altitude: number | undefined = $derived(inputToNum(rawAltitude));
 	let rawDistance: string = $state('');
-	const distance: number | undefined = $derived(rawDistance ? +rawDistance : undefined);
+	const distance: number | undefined = $derived(inputToNum(rawDistance));
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 

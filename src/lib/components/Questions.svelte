@@ -4,8 +4,25 @@
 	import { info, updateInfo } from '$lib/stores/info';
 	import FormInput from './FormInput.svelte';
 	import { get } from 'svelte/store';
+	import { inputToNum } from '$lib';
 
 	const currentInfo = get(info);
+
+	let title: string = $state(currentInfo.title);
+	let owner: string = $state(currentInfo.owner);
+	let rawFuelPerHour: string = $state(currentInfo.fuelPerHour.toString());
+	const fuelPerHour: number | undefined = $derived(inputToNum(rawFuelPerHour));
+	let rawSpeed: string = $state(currentInfo.speed.toString());
+	const speed: number | undefined = $derived(inputToNum(rawSpeed));
+
+	function handleSubmit() {
+		if (!fuelPerHour || !speed) return;
+		updateInfo('title', title.trim());
+		updateInfo('owner', owner.trim());
+		updateInfo('fuelPerHour', fuelPerHour);
+		updateInfo('speed', speed);
+		next();
+	}
 </script>
 
 <form
@@ -13,7 +30,7 @@
 	class="card card-lg bg-base-300 mx-auto my-auto w-200"
 	onsubmit={(e) => {
 		e.preventDefault();
-		next();
+		handleSubmit();
 	}}
 >
 	<div class="card-body">
@@ -22,14 +39,12 @@
 			<FormInput
 				label={$t('title_question')}
 				placeholder={$t('title_placeholder')}
-				value={currentInfo.title}
-				onchange={(e) => updateInfo('title', e.currentTarget.value.trim())}
+				bind:value={title}
 			></FormInput>
 			<FormInput
 				label={$t('owner_question')}
 				placeholder={$t('owner_placeholder')}
-				value={currentInfo.owner}
-				onchange={(e) => updateInfo('owner', e.currentTarget.value.trim())}
+				bind:value={owner}
 			></FormInput>
 			<FormInput
 				label={$t('fuel_question')}
@@ -37,8 +52,7 @@
 				inputType="number"
 				required
 				min={0}
-				value={currentInfo.fuelPerHour}
-				onchange={(e) => updateInfo('fuelPerHour', e.currentTarget.valueAsNumber)}
+				bind:value={rawFuelPerHour}
 			></FormInput>
 			<FormInput
 				label={$t('speed_question')}
@@ -46,8 +60,7 @@
 				inputType="number"
 				required
 				min={1}
-				value={currentInfo.speed}
-				onchange={(e) => updateInfo('speed', e.currentTarget.valueAsNumber)}
+				bind:value={rawSpeed}
 			></FormInput>
 		</div>
 		<div class="card-actions mt-2 justify-end">

@@ -10,8 +10,7 @@
 		value = $bindable(),
 		step,
 		min,
-		max,
-		onchange
+		max
 	}: {
 		label: string;
 		placeholder?: string;
@@ -21,23 +20,12 @@
 		step?: number;
 		min?: number;
 		max?: number;
-		onchange?: ChangeEventHandler<HTMLInputElement>;
 	} = $props();
 </script>
 
 <label class="input input-ghost w-full" dir="auto">
 	{label}
-	<input
-		type={inputType}
-		{step}
-		class="grow"
-		bind:value
-		{placeholder}
-		{required}
-		{min}
-		{max}
-		{onchange}
-	/>
+	<input type={inputType} {step} class="grow" bind:value {placeholder} {required} {min} {max} />
 	{#if !required}
 		<span class="badge badge-neutral badge-xs">{$t('optional')}</span>
 	{/if}
