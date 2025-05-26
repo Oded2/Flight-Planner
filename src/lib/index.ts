@@ -28,14 +28,6 @@ export function inputToNum(rawInput: string): number | undefined {
 	return rawInput ? +rawInput : undefined;
 }
 
-export function localStorageInfo(): void {
-	const localStorageInfo = localStorage.getItem('info');
-	if (localStorageInfo) {
-		const infoJson = JSON.parse(localStorageInfo);
-		if (infoTypeGuard(infoJson)) info.set(infoJson);
-	}
-}
-
 function entryTypeGuard(obj: any): obj is Entry {
 	return (
 		obj &&

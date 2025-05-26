@@ -2,15 +2,12 @@
 	import { next } from '$lib/stores/stages';
 	import { t } from '$lib/stores/localization';
 	import FileInput from './FileInput.svelte';
-	import { infoTypeGuard, localStorageInfo } from '$lib';
+	import { infoTypeGuard } from '$lib';
 	import { defaultInfo, info, reset, setInfo } from '$lib/stores/info';
-	import { onMount } from 'svelte';
 
 	const infoExist: boolean = $derived(JSON.stringify($info) !== JSON.stringify(defaultInfo));
 
 	let reloadKey = $state(0);
-
-	onMount(localStorageInfo);
 
 	function handleUpload(result: string) {
 		try {

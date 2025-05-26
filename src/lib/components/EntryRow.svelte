@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Entry } from '$lib';
-	import { editIndex, info } from '$lib/stores/info';
+	import { editIndex, info, removeEntry } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
+	import { get } from 'svelte/store';
 
 	const { entry, index, editable }: { entry: Entry; index: number; editable?: boolean } = $props();
 
@@ -9,18 +10,11 @@
 	const fuel = $derived(time * $info.fuelPerHour);
 
 	function formatHour(hoursDecimal: number): string {
-		// total seconds, rounded to nearest integer
 		const totalSec = Math.round(hoursDecimal * 3600);
-
-		// derive h, m, s
 		const h = Math.floor(totalSec / 3600);
 		const m = Math.floor((totalSec % 3600) / 60);
 		const s = totalSec % 60;
-
-		// helper for two-digit padding
 		const pad2 = (n: number) => (n < 10 ? '0' : '') + n;
-
-		// omit "hh:" when h is zero
 		return h > 0 ? `${h}:${pad2(m)}:${pad2(s)}` : `${m}:${pad2(s)}`;
 	}
 </script>
@@ -44,9 +38,23 @@
 	{#if editable}
 		<td>
 			{#if index != -1}
-				<button type="button" class="cursor-pointer underline" onclick={() => editIndex.set(index)}
-					>{$t('edit')}</button
-				>
+				<div class="flex flex-col gap-0.5">
+					<button
+						type="button"
+						class="cursor-pointer underline"
+						onclick={() => editIndex.set(index)}>{$t('edit')}</button
+					>
+					<button
+						type="button"
+						class="cursor-pointer underline"
+						onclick={() => {
+							if (get(editIndex) == index) editIndex.set(-1);
+							removeEntry(index);
+						}}
+					>
+						{$t('remove')}
+					</button>
+				</div>
 			{:else}
 				-
 			{/if}

@@ -1,4 +1,4 @@
-import type { Entry, Info } from '$lib';
+import { infoTypeGuard, type Entry, type Info } from '$lib';
 import { get, writable, type Writable } from 'svelte/store';
 
 export const defaultInfo: Info = {
@@ -9,7 +9,7 @@ export const defaultInfo: Info = {
 	speed: 90
 };
 
-export const info: Writable<Info> = writable(structuredClone(defaultInfo));
+export const info: Writable<Info> = writable(defaultInfo);
 export const editIndex: Writable<number> = writable(-1);
 
 export function setInfo(newInfo: Info) {
@@ -25,10 +25,10 @@ export function updateInitialInfo(
 ) {
 	info.update((i) => ({
 		...i,
-		title: title,
-		owner: owner,
-		fuelPerHour: fuelPerHour,
-		speed: speed
+		title,
+		owner,
+		fuelPerHour,
+		speed
 	}));
 	setStorage();
 }
@@ -49,10 +49,14 @@ export function addEntry(entry: Entry): void {
 	setStorage();
 }
 
+export function removeEntry(index: number) {
+	info.update((i) => ({ ...i, entries: i.entries.filter((_, arrIndex) => arrIndex != index) }));
+	setStorage();
+}
+
 export function reset(): void {
 	localStorage.removeItem('info');
 	info.set(structuredClone(defaultInfo));
-	setStorage();
 }
 
 export function resetEditIndex() {

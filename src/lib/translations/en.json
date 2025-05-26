@@ -42,5 +42,6 @@
     "invalid_json": "Invalid JSON",
     "view_current": "View current flight plan",
     "modify_plan": "Modify Flight Plan",
-    "reset_plan": "Reset flight plan"
+    "reset_plan": "Reset flight plan",
+    "remove": "Remove"
 }

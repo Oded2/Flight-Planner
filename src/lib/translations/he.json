@@ -42,5 +42,6 @@
     "invalid_json": "JSON לא תקין",
     "view_current": "הצג את תוכנית הטיסה הנוכחית",
     "modify_plan": "עריכת תוכנית טיסה",
-    "reset_plan": "איפוס תוכנית הטיסה"
+    "reset_plan": "איפוס תוכנית הטיסה",
+    "remove": "הסרה"
 }

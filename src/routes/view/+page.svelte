@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { localStorageInfo } from '$lib';
 	import DownloadJson from '$lib/components/DownloadJSON.svelte';
 	import Table from '$lib/components/Table.svelte';
 	import { info } from '$lib/stores/info';
@@ -8,10 +7,7 @@
 
 	const title = $derived($info.title || $t('untitled'));
 
-	onMount(() => {
-		document.documentElement.setAttribute('data-theme', 'light');
-		localStorageInfo();
-	});
+	onMount(() => document.documentElement.setAttribute('data-theme', 'light'));
 </script>
 
 <div class="p-5 print:p-0" dir="auto">

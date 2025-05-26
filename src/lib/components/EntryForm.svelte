@@ -30,6 +30,8 @@
 			rawDistance = entry.distance.toString() ?? '';
 			identifierPoints = entry.identifierPoints;
 			story = entry.story;
+		} else {
+			resetValues();
 		}
 	});
 

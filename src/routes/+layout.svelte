@@ -3,6 +3,8 @@
 	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import { locale } from '$lib/stores/localization';
+	import { infoTypeGuard } from '$lib';
+	import { info } from '$lib/stores/info';
 
 	let { children } = $props();
 
@@ -14,8 +16,15 @@
 	};
 
 	onMount(() => {
+		// Locale
 		const storageLocale = localStorage.getItem('locale');
 		if (storageLocale) locale.set(storageLocale);
+		// Info
+		const localStorageInfo = localStorage.getItem('info');
+		if (localStorageInfo) {
+			const infoJson = JSON.parse(localStorageInfo);
+			if (infoTypeGuard(infoJson)) info.set(infoJson);
+		}
 		isReady = true;
 	});
 </script>
