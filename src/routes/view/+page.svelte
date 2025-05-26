@@ -6,6 +6,8 @@
 	import { t } from '$lib/stores/localization';
 	import { onMount } from 'svelte';
 
+	const title = $derived($info.title || $t('untitled'));
+
 	onMount(() => {
 		document.documentElement.setAttribute('data-theme', 'light');
 		localStorageInfo();
@@ -30,7 +32,7 @@
 				<button class="btn btn-primary me-auto" onclick={() => print()}>{$t('print')}</button>
 				<span class="text-sm font-light italic">{$t('print_tip')}</span>
 			</div>
-			<DownloadJson className="btn btn-neutral btn-outline me-auto mt-2" data={$info}>
+			<DownloadJson data={$info} {title} className="btn btn-neutral btn-outline me-auto mt-2">
 				{$t('save_as_json')}
 			</DownloadJson>
 		</div>
@@ -39,6 +41,6 @@
 
 <svelte:head>
 	<title>
-		{$info.title || $t('untitled')}
+		{title}
 	</title>
 </svelte:head>
