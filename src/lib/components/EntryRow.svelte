@@ -44,7 +44,6 @@
 						class="cursor-pointer underline"
 						onclick={() => editIndex.set(index)}>{$t('edit')}</button
 					>
-					<span>/</span>
 					<button type="button" class="cursor-pointer underline" onclick={() => removeEntry(index)}>
 						{$t('remove')}
 					</button>
