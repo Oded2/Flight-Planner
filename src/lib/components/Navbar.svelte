@@ -2,7 +2,7 @@
 	import type { SelectOption } from '$lib';
 	import { get } from 'svelte/store';
 	import LabelSelect from './LabelSelect.svelte';
-	import { locale, updateLocale } from '$lib/stores/localization';
+	import { locale, localeMap, updateLocale } from '$lib/stores/localization';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import { page } from '$app/state';
@@ -10,10 +10,10 @@
 	import { PUBLIC_REPO_LINK } from '$env/static/public';
 
 	const isHome = $derived(!page.url.pathname.includes('view'));
-	const languages: SelectOption[] = [
-		{ code: 'en', label: 'English' },
-		{ code: 'he', label: 'עברית' }
-	];
+	const languages: SelectOption[] = Object.entries(localeMap).map(([key, val]) => ({
+		code: key,
+		label: val.label
+	}));
 	const themes: SelectOption[] = [
 		{
 			code: 'default',
