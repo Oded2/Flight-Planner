@@ -3,6 +3,7 @@ import english from '../translations/en.json';
 import hebrew from '../translations/he.json';
 import arabic from '../translations/ar.json';
 import russian from '../translations/ru.json';
+import spanish from '../translations/es.json';
 
 export const localeMap: Record<
 	string,
@@ -26,6 +27,10 @@ export const localeMap: Record<
 	ru: {
 		label: 'Русский',
 		map: russian
+	},
+	es: {
+		label: 'Español',
+		map: spanish
 	}
 };
 
