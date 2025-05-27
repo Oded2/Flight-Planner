@@ -16,7 +16,7 @@
 </script>
 
 <div class="rounded-box border-base-content/5 bg-base-100 w-full overflow-auto border">
-	<table class="table-zebra table text-center" dir="auto">
+	<table class="table-zebra table text-center" class:whitespace-nowrap={editable} dir="auto">
 		{#if $info.title}
 			<caption class="mt-3 text-xl font-semibold" dir="auto">
 				{$info.title}

@@ -20,8 +20,8 @@
 
 <tr>
 	<td>{index == -1 ? $t('total') : (index + 1).toLocaleString()}</td>
-	<td>{entry.from}</td>
-	<td>{entry.to}</td>
+	<td class="whitespace-nowrap">{entry.from}</td>
+	<td class="whitespace-nowrap">{entry.to}</td>
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
 	<td>{entry.altitude?.toLocaleString() ?? '-'}</td>
 	<td>{entry.distance.toLocaleString()}</td>
@@ -32,8 +32,10 @@
 			maximumFractionDigits: 1
 		})}
 	</td>
-	<td>{entry.identifierPoints || '-'}</td>
-	<td>{entry.story || '-'}</td>
+	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>
+		{entry.identifierPoints || '-'}
+	</td>
+	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>{entry.story || '-'}</td>
 	{#if editable}
 		<td>
 			{#if index != -1}
@@ -43,6 +45,7 @@
 						class="cursor-pointer underline"
 						onclick={() => editIndex.set(index)}>{$t('edit')}</button
 					>
+					<span>/</span>
 					<button type="button" class="cursor-pointer underline" onclick={() => removeEntry(index)}>
 						{$t('remove')}
 					</button>
