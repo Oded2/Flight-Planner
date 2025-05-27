@@ -39,7 +39,7 @@
 					<FileInput label={$t('upload_json')} onChange={handleUpload}></FileInput>
 				{/key}
 				{#if infoExist}
-					<a href="/view" target="_blank" class="btn btn-neutral">{$t('view_current')}</a>
+					<a href="/view" class="btn btn-neutral">{$t('view_current')}</a>
 					<button
 						onclick={() => {
 							reloadKey++;

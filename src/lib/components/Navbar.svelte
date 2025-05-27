@@ -9,7 +9,7 @@
 	import { setStage } from '$lib/stores/stages';
 	import { PUBLIC_REPO_LINK } from '$env/static/public';
 
-	const isHome = !page.url.pathname.includes('view');
+	const isHome = $derived(!page.url.pathname.includes('view'));
 
 	onMount(() => themeChange(false));
 
@@ -58,8 +58,8 @@
 		>
 			Language
 		</LabelSelect>
-		{#if isHome}
+		<div class:hidden={!isHome}>
 			<LabelSelect themes options={themes}>Theme</LabelSelect>
-		{/if}
+		</div>
 	</div>
 </div>

@@ -5,15 +5,25 @@
 	import { locale } from '$lib/stores/localization';
 	import { infoTypeGuard } from '$lib';
 	import { info } from '$lib/stores/info';
+	import { page } from '$app/state';
 
-	let { children } = $props();
+	const { children } = $props();
 
 	let isReady = $state(false);
+	let originalTheme: string | null = null;
 
 	const handleLanguageChange = (code: string) => {
 		locale.set(code);
 		localStorage.setItem('locale', code);
 	};
+
+	$effect(() => {
+		if (isReady && page.url.pathname === '/view') {
+			originalTheme = document.documentElement.getAttribute('data-theme');
+			document.documentElement.setAttribute('data-theme', 'light');
+		} else if (isReady && originalTheme)
+			document.documentElement.setAttribute('data-theme', originalTheme);
+	});
 
 	onMount(() => {
 		// Locale

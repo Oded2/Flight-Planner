@@ -6,8 +6,6 @@
 	import { onMount } from 'svelte';
 
 	const title = $derived($info.title || $t('untitled'));
-
-	onMount(() => document.documentElement.setAttribute('data-theme', 'light'));
 </script>
 
 <div class="p-5 print:p-0" dir="auto">
