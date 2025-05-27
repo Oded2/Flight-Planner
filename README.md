@@ -32,6 +32,6 @@ npm install
 npm run dev
 ```
 
-## 📄 License
+## License
 
 MIT License © 2025
