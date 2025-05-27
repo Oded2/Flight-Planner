@@ -2,6 +2,7 @@ import { writable, derived } from 'svelte/store';
 import english from '../translations/en.json';
 import hebrew from '../translations/he.json';
 import arabic from '../translations/ar.json';
+import russian from '../translations/ru.json';
 
 export const localeMap: Record<
 	string,
@@ -21,6 +22,10 @@ export const localeMap: Record<
 	ar: {
 		label: 'عربي',
 		map: arabic
+	},
+	ru: {
+		label: 'Русский',
+		map: russian
 	}
 };
 
