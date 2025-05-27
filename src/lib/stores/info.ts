@@ -50,7 +50,21 @@ export function addEntry(entry: Entry): void {
 }
 
 export function removeEntry(index: number) {
-	info.update((i) => ({ ...i, entries: i.entries.filter((_, arrIndex) => arrIndex != index) }));
+	const currentEditIndex = get(editIndex);
+	// If the entry being removed is currently being edited, cancel editing
+	if (index === currentEditIndex) {
+		resetEditIndex();
+	}
+	// If an entry before the one being edited is removed, decrement the edit index
+	// to keep it pointing to the correct entry (which has now shifted up)
+	else if (currentEditIndex > index) {
+		editIndex.update((i) => i - 1);
+	}
+	// Remove the entry at the specified index
+	info.update((i) => ({
+		...i,
+		entries: i.entries.filter((_, arrIndex) => arrIndex !== index)
+	}));
 	setStorage();
 }
 
