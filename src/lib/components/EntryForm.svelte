@@ -133,8 +133,11 @@
 				href="/view"
 				target="_blank"
 				class="btn btn-neutral w-full"
-				class:btn-disabled={$info.entries.length == 0}>{$t('view')}</a
+				class:btn-disabled={$info.entries.length == 0}
 			>
+				<i class="fa-solid fa-arrow-up-right-from-square"></i>
+				{$t('view')}
+			</a>
 		</div>
 	</div>
 </form>
