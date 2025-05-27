@@ -38,8 +38,7 @@ export const locale = writable('en');
 
 // Derived store that updates translations automatically
 export const t = derived(locale, (newLocale) => {
-	const translations = localeMap[newLocale] ?? {};
-	return (key: string) => translations.map[key] ?? key;
+	return (key: string) => localeMap[newLocale].map[key] ?? localeMap.en.map[key] ?? key;
 });
 
 export function updateLocale(newLocale: string) {
