@@ -34,8 +34,8 @@
 	onMount(() => themeChange(false));
 </script>
 
-<div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
-	<div class="flex flex-1 gap-1">
+<div class="navbar bg-primary text-primary-content justify-between shadow-sm print:hidden">
+	<div class="flex gap-1">
 		{#if isHome}
 			<button onclick={() => setStage(0)} class="btn btn-ghost text-xl">Flight Planner</button>
 		{:else}
@@ -51,7 +51,7 @@
 			options={languages}
 			selectedOption={originalLocale}
 		>
-			Language
+			<i class="fa-solid fa-language"></i> Language
 		</LabelSelect>
 		<div class:hidden={!isHome}>
 			<LabelSelect themes options={themes}>Theme</LabelSelect>

@@ -20,8 +20,8 @@
 	const uniqueId = `select${options[0].code}`;
 </script>
 
-<div class="flex items-baseline gap-2">
-	<label for={uniqueId}>{@render children()}</label>
+<div class="flex items-center gap-2">
+	<label class="flex-shrink-0" for={uniqueId}>{@render children()}</label>
 	<select id={uniqueId} {onchange} class="select select-ghost" data-choose-theme={themes}>
 		{#each options as option}
 			<option
