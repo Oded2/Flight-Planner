@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/stores/localization';
-	import type { ChangeEventHandler, HTMLInputTypeAttribute } from 'svelte/elements';
+	import type { HTMLInputTypeAttribute } from 'svelte/elements';
 
 	let {
 		label,
