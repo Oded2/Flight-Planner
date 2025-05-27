@@ -30,7 +30,7 @@
 		{label}
 		<input type="file" accept=".json" class="hidden" onchange={handleFileUpload} />
 	</label>
-	<span class="text-sm">
+	<span class="text-sm whitespace-nowrap">
 		{file ? file.name : $t('no_file')}
 	</span>
 </div>
