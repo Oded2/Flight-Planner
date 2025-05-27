@@ -3,7 +3,6 @@
 	import Table from '$lib/components/Table.svelte';
 	import { info } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
-	import { onMount } from 'svelte';
 
 	const title = $derived($info.title || $t('untitled'));
 </script>
