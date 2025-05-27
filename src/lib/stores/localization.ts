@@ -14,3 +14,8 @@ export const t = derived(locale, (newLocale) => {
 	const translations = localeMap[newLocale] ?? {};
 	return (key: string) => translations[key] ?? key;
 });
+
+export function updateLocale(newLocale: string) {
+	locale.set(newLocale);
+	localStorage.setItem('locale', newLocale);
+}

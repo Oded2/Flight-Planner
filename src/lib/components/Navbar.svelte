@@ -2,14 +2,13 @@
 	import type { SelectOption } from '$lib';
 	import { get } from 'svelte/store';
 	import LabelSelect from './LabelSelect.svelte';
-	import { locale } from '$lib/stores/localization';
+	import { locale, updateLocale } from '$lib/stores/localization';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import { page } from '$app/state';
 	import { setStage } from '$lib/stores/stages';
 	import { PUBLIC_REPO_LINK } from '$env/static/public';
 
-	const { handleLanguageChange }: { handleLanguageChange: (code: string) => void } = $props();
 	const isHome = $derived(!page.url.pathname.includes('view'));
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
@@ -48,7 +47,7 @@
 	</div>
 	<div class="flex gap-4">
 		<LabelSelect
-			onchange={(e) => handleLanguageChange(e.currentTarget.value)}
+			onchange={(e) => updateLocale(e.currentTarget.value)}
 			options={languages}
 			selectedOption={originalLocale}
 		>

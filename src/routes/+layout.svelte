@@ -12,11 +12,6 @@
 	let isReady = $state(false);
 	let originalTheme: string | null = null;
 
-	const handleLanguageChange = (code: string) => {
-		locale.set(code);
-		localStorage.setItem('locale', code);
-	};
-
 	$effect(() => {
 		if (isReady && page.url.pathname === '/view') {
 			originalTheme = document.documentElement.getAttribute('data-theme');
@@ -41,7 +36,7 @@
 
 {#if isReady}
 	<div class="flex min-h-screen flex-col print:min-h-auto">
-		<Navbar {handleLanguageChange}></Navbar>
+		<Navbar></Navbar>
 		{@render children()}
 	</div>
 {/if}
