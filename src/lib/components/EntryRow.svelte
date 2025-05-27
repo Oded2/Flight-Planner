@@ -2,7 +2,6 @@
 	import type { Entry } from '$lib';
 	import { editIndex, info, removeEntry } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
-	import { get } from 'svelte/store';
 
 	const { entry, index, editable }: { entry: Entry; index: number; editable?: boolean } = $props();
 
