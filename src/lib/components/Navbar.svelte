@@ -9,17 +9,12 @@
 	import { setStage } from '$lib/stores/stages';
 	import { PUBLIC_REPO_LINK } from '$env/static/public';
 
-	const isHome = $derived(!page.url.pathname.includes('view'));
-
-	onMount(() => themeChange(false));
-
 	const { handleLanguageChange }: { handleLanguageChange: (code: string) => void } = $props();
-
+	const isHome = $derived(!page.url.pathname.includes('view'));
 	const languages: SelectOption[] = [
 		{ code: 'en', label: 'English' },
 		{ code: 'he', label: 'עברית' }
 	];
-
 	const themes: SelectOption[] = [
 		{
 			code: 'default',
@@ -35,8 +30,9 @@
 			label: 'Dark'
 		}
 	];
-
 	const originalLocale = get(locale);
+
+	onMount(() => themeChange(false));
 </script>
 
 <div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
