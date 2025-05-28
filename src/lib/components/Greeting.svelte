@@ -32,9 +32,9 @@
 				{$t('description')}
 			</p>
 			<div class="flex flex-wrap gap-4">
-				<button onclick={next} class="btn btn-primary"
-					>{infoExist ? $t('modify_plan') : $t('get_started')}</button
-				>
+				<button onclick={next} class="btn btn-primary">
+					{infoExist ? $t('modify_plan') : $t('get_started')}
+				</button>
 				{#key reloadKey}
 					<FileInput label={$t('upload_json')} onChange={handleUpload}></FileInput>
 				{/key}
