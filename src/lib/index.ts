@@ -1,11 +1,3 @@
-import { info } from './stores/info';
-
-export type SelectOption = {
-	code: string;
-	label: string;
-	disabled?: boolean;
-};
-
 export type Entry = {
 	from: string;
 	to: string;
