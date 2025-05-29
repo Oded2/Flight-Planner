@@ -21,21 +21,7 @@
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 
-	$effect(() => {
-		const index = $editIndex;
-		if (index != -1) {
-			const entry = get(info).entries[index];
-			from = entry.from;
-			to = entry.to;
-			rawHeading = entry.heading?.toString() ?? '';
-			rawAltitude = entry.altitude?.toString() ?? '';
-			rawDistance = entry.distance.toString() ?? '';
-			identifierPoints = entry.identifierPoints;
-			story = entry.story;
-		} else {
-			resetValues();
-		}
-	});
+	let originalEntriesLength = get(info).entries.length;
 
 	function resetValues(): void {
 		const lastEntry = get(info).entries.at(-1);
@@ -67,6 +53,29 @@
 		}
 		resetValues();
 	}
+
+	$effect(() => {
+		const index = $editIndex;
+		if (index != -1) {
+			const entry = get(info).entries[index];
+			from = entry.from;
+			to = entry.to;
+			rawHeading = entry.heading?.toString() ?? '';
+			rawAltitude = entry.altitude?.toString() ?? '';
+			rawDistance = entry.distance.toString() ?? '';
+			identifierPoints = entry.identifierPoints;
+			story = entry.story;
+		} else {
+			resetValues();
+		}
+	});
+
+	$effect(() => {
+		if ($info.entries.length == originalEntriesLength - 1) {
+			resetValues();
+			originalEntriesLength--;
+		}
+	});
 </script>
 
 <form
