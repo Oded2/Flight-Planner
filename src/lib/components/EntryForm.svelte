@@ -47,6 +47,7 @@
 		};
 		if (get(editIndex) == -1) {
 			addEntry(entry);
+			originalEntriesLength++;
 		} else {
 			editEntry(entry);
 			resetEditIndex();
