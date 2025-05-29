@@ -34,7 +34,7 @@
 	<div class="w-full overflow-auto xl:col-span-2">
 		<EntryForm></EntryForm>
 	</div>
-	<div bind:this={xlContainer} class="mx-auto flex w-full xl:col-span-4">
+	<div bind:this={xlContainer} class="mx-auto flex w-full flex-col xl:col-span-4">
 		{#if ready}
 			<Table editable></Table>
 		{/if}
