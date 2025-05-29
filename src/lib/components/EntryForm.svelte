@@ -36,9 +36,11 @@
 	});
 
 	function resetValues(): void {
-		from = get(info).entries.at(-1)?.to ?? '';
+		const lastEntry = get(info).entries.at(-1);
+		from = lastEntry?.to ?? '';
 		to = '';
 		rawHeading = '';
+		rawAltitude = lastEntry?.altitude?.toString() ?? '';
 		rawDistance = '';
 		identifierPoints = '';
 		story = '';
@@ -79,22 +81,19 @@
 			<h2 class="card-title">
 				{`${$t('entries_label')} ${(($editIndex == -1 ? $info.entries.length : $editIndex) + 1).toLocaleString()}`}
 			</h2>
-			{#if $editIndex == -1}
-				<button type="button" onclick={back} class="me-auto cursor-pointer font-light underline">
-					{$t('back')}
-				</button>
-			{:else}
-				<button
-					type="button"
-					onclick={() => {
+			<button
+				type="button"
+				onclick={() => {
+					if ($editIndex == -1) back();
+					else {
 						resetEditIndex();
 						resetValues();
-					}}
-					class="me-auto cursor-pointer font-light underline"
-				>
-					{$t('cancel')}
-				</button>
-			{/if}
+					}
+				}}
+				class="me-auto cursor-pointer font-light underline"
+			>
+				{$editIndex == -1 ? $t('back') : $t('cancel')}
+			</button>
 		</div>
 		<div class="flex flex-col gap-3">
 			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
