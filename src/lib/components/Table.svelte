@@ -24,7 +24,7 @@
 		dir="auto"
 	>
 		{#if $info.title}
-			<caption class="mt-3 text-xl font-semibold" dir="auto">
+			<caption class="mt-3 text-xl font-semibold print:mt-0" dir="auto">
 				{$info.title}
 			</caption>
 		{/if}
