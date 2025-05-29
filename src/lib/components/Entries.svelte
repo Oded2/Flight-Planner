@@ -15,7 +15,6 @@
 		ready = false;
 		requestAnimationFrame(() => {
 			const height = refDiv.getBoundingClientRect().height;
-			console.log(height);
 			if (window.innerWidth > XLBREAKPOINT) xlContainer.style.maxHeight = `${height}px`;
 			else xlContainer.style.maxHeight = `99999px`;
 			ready = true;
