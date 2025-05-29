@@ -17,7 +17,7 @@
 </script>
 
 <div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
-	<div class="navbar-start">
+	<div class="navbar-start gap-1">
 		{#if isHome}
 			<button onclick={() => setStage(0)} class="btn btn-ghost text-xl">Flight Planner</button>
 		{:else}
@@ -34,10 +34,12 @@
 					<li><button onclick={() => updateLocale(language.code)}>{language.label}</button></li>
 				{/each}
 			</NavMenu>
-			<NavMenu iconClass="fa-solid fa-circle-half-stroke" label="Theme">
-				<li><button data-set-theme="light">Light</button></li>
-				<li><button data-set-theme="dark">Dark</button></li>
-			</NavMenu>
+			{#if isHome}
+				<NavMenu iconClass="fa-solid fa-circle-half-stroke" label="Theme">
+					<li><button data-set-theme="light">Light</button></li>
+					<li><button data-set-theme="dark">Dark</button></li>
+				</NavMenu>
+			{/if}
 		</ul>
 	</div>
 </div>
