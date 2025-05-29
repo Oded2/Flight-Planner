@@ -26,7 +26,7 @@
 
 <form
 	dir="auto"
-	class="card card-lg bg-base-300 my-auto md:mx-auto md:w-2xl"
+	class="card bg-base-300 my-auto md:mx-auto md:w-2xl"
 	onsubmit={(e) => {
 		e.preventDefault();
 		handleSubmit();
