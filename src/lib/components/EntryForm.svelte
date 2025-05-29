@@ -5,6 +5,8 @@
 	import { back } from '$lib/stores/stages';
 	import { get } from 'svelte/store';
 	import { inputToNum, type Entry } from '$lib';
+	import FormContainer from './FormContainer.svelte';
+	import FormActions from './FormActions.svelte';
 
 	const lastIndex = $info.entries.length - 1;
 
@@ -95,7 +97,7 @@
 				{$editIndex == -1 ? $t('back') : $t('cancel')}
 			</button>
 		</div>
-		<div class="flex flex-col gap-3">
+		<FormContainer>
 			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
 			<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>
 			<FormInput
@@ -123,11 +125,11 @@
 			></FormInput>
 			<FormInput bind:value={identifierPoints} label={$t('entry_identifier')}></FormInput>
 			<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
-		</div>
-		<div class="card-actions mt-2">
+		</FormContainer>
+		<FormActions>
 			<button type="submit" class="btn btn-primary w-full"
-				>{$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}</button
-			>
+				>{$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}
+			</button>
 			<a
 				href="/view"
 				target="_blank"
@@ -137,6 +139,6 @@
 				<i class="fa-solid fa-arrow-up-right-from-square"></i>
 				{$t('view')}
 			</a>
-		</div>
+		</FormActions>
 	</div>
 </form>
