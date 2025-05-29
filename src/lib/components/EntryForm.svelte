@@ -8,7 +8,7 @@
 	import FormContainer from './FormContainer.svelte';
 	import FormActions from './FormActions.svelte';
 
-	const lastIndex = $info.entries.length - 1;
+	const lastIndex = get(info).entries.length - 1;
 
 	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to ?? '');
 	let to: string = $state('');
