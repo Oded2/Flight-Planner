@@ -16,8 +16,8 @@
 	onMount(() => themeChange(false));
 </script>
 
-<div class="navbar bg-primary text-primary-content justify-between shadow-sm print:hidden">
-	<div class="flex gap-1">
+<div class="navbar bg-primary text-primary-content shadow-sm print:hidden">
+	<div class="navbar-start">
 		{#if isHome}
 			<button onclick={() => setStage(0)} class="btn btn-ghost text-xl">Flight Planner</button>
 		{:else}
@@ -29,12 +29,12 @@
 	</div>
 	<div class="navbar-end">
 		<ul class="menu menu-horizontal px-1 print:hidden">
-			<NavMenu label="Language">
+			<NavMenu iconClass="fa-solid fa-globe" label="Language">
 				{#each languages as language}
 					<li><button onclick={() => updateLocale(language.code)}>{language.label}</button></li>
 				{/each}
 			</NavMenu>
-			<NavMenu label="Theme">
+			<NavMenu iconClass="fa-solid fa-circle-half-stroke" label="Theme">
 				<li><button data-set-theme="light">Light</button></li>
 				<li><button data-set-theme="dark">Dark</button></li>
 			</NavMenu>
