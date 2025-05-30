@@ -8,19 +8,20 @@
 	name: 'nav';
 	default: false;
 	prefersdark: false;
-	color-scheme: 'light';
-	--color-base-100: oklch(27% 0.041 260.031);
-	--color-base-200: oklch(20% 0.042 265.755);
-	--color-base-300: oklch(12% 0.042 264.695);
-	--color-base-content: oklch(96% 0.003 264.542);
+	color-scheme: 'dark';
+
+	--color-base-100: oklch(23% 0.03 265);
+	--color-base-200: oklch(19% 0.03 265);
+	--color-base-300: oklch(15% 0.03 265);
+	--color-base-content: oklch(95% 0.01 260);
 	--color-primary: oklch(54% 0.245 262.881);
 	--color-primary-content: oklch(98% 0.016 73.684);
 	--color-secondary: oklch(44% 0.03 256.802);
 	--color-secondary-content: oklch(98% 0.019 200.873);
 	--color-accent: oklch(78% 0.154 211.53);
 	--color-accent-content: oklch(21% 0.006 285.885);
-	--color-neutral: oklch(37% 0.044 257.287);
-	--color-neutral-content: oklch(98% 0.002 247.839);
+	--color-neutral: oklch(32% 0.03 260);
+	--color-neutral-content: oklch(96% 0.01 260);
 	--color-info: oklch(58% 0.158 241.966);
 	--color-info-content: oklch(97% 0.013 236.62);
 	--color-success: oklch(64% 0.2 131.684);
@@ -29,6 +30,7 @@
 	--color-warning-content: oklch(98% 0.026 102.212);
 	--color-error: oklch(57% 0.245 27.325);
 	--color-error-content: oklch(97% 0.013 17.38);
+
 	--radius-selector: 2rem;
 	--radius-field: 0.5rem;
 	--radius-box: 0.5rem;
