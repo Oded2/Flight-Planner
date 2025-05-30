@@ -56,7 +56,7 @@
 			{#if index != -1}
 				<div class="flex gap-1.5 overflow-visible">
 					<OptionButton tooltip={$t('edit')} handleClick={() => editIndex.set(index)}>
-						<i class="fa-solid fa-pen-to-square"></i>
+						<i class="fa-solid fa-marker"></i>
 					</OptionButton>
 					<OptionButton tooltip={$t('remove')} isError handleClick={() => removeEntry(index)}>
 						<i class="fa-solid fa-eraser"></i>
