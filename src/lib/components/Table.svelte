@@ -30,7 +30,7 @@
 		{/if}
 		<thead>
 			<tr>
-				<th>#</th>
+				<th class="bg-base-100 sticky left-0">#</th>
 				<th>{$t('entry_from')}</th>
 				<th>{$t('entry_to')}</th>
 				<th>{$t('entry_heading')}</th>
@@ -41,7 +41,7 @@
 				<th>{$t('entry_identifier')}</th>
 				<th>{$t('entry_story')}</th>
 				{#if editable}
-					<th>{$t('options')}</th>
+					<th class="bg-base-100 sticky right-0">{$t('options')}</th>
 				{/if}
 			</tr>
 		</thead>

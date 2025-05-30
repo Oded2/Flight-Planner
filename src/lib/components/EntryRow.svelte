@@ -19,7 +19,12 @@
 </script>
 
 <tr>
-	<td>{index == -1 ? $t('total') : (index + 1).toLocaleString()}</td>
+	<td
+		class="sticky left-0"
+		class:bg-base-100={index == -1 || index % 2 == 0}
+		class:bg-base-200={index != -1 && index % 2 != 0}
+		>{index == -1 ? $t('total') : (index + 1).toLocaleString()}
+	</td>
 	<td class="whitespace-nowrap">{entry.from}</td>
 	<td class="whitespace-nowrap">{entry.to}</td>
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
@@ -47,7 +52,11 @@
 	</td>
 	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>{entry.story || '-'}</td>
 	{#if editable}
-		<td>
+		<td
+			class="sticky right-0"
+			class:bg-base-100={index == -1 || index % 2 == 0}
+			class:bg-base-200={index != -1 && index % 2 != 0}
+		>
 			{#if index != -1}
 				<div class="flex gap-0.5">
 					<button
