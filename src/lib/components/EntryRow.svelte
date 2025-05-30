@@ -2,6 +2,7 @@
 	import type { Entry } from '$lib';
 	import { editIndex, info, removeEntry } from '$lib/stores/info';
 	import { t } from '$lib/stores/localization';
+	import OptionButton from './OptionButton.svelte';
 
 	const { entry, index, editable }: { entry: Entry; index: number; editable?: boolean } = $props();
 
@@ -53,17 +54,13 @@
 			class:bg-base-200={index != -1 && index % 2 != 0}
 		>
 			{#if index != -1}
-				<div class="flex gap-0.5">
-					<button
-						type="button"
-						class="cursor-pointer underline"
-						onclick={() => editIndex.set(index)}
-						>{$t('edit')}
-					</button>
-					<span>/</span>
-					<button type="button" class="cursor-pointer underline" onclick={() => removeEntry(index)}>
-						{$t('remove')}
-					</button>
+				<div class="flex gap-1.5 overflow-visible">
+					<OptionButton tooltip={$t('edit')} handleClick={() => editIndex.set(index)}>
+						<i class="fa-solid fa-pen-to-square"></i>
+					</OptionButton>
+					<OptionButton tooltip={$t('remove')} isError handleClick={() => removeEntry(index)}>
+						<i class="fa-solid fa-eraser"></i>
+					</OptionButton>
 				</div>
 			{:else}
 				-
