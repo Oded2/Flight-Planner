@@ -36,8 +36,8 @@
 			</NavMenu>
 			{#if isHome}
 				<NavMenu iconClass="fa-solid fa-circle-half-stroke" label="Theme">
-					<li><button data-set-theme="light">Light</button></li>
-					<li><button data-set-theme="dark">Dark</button></li>
+					<li><button data-set-theme="winter">Light</button></li>
+					<li><button data-set-theme="nav">Dark</button></li>
 				</NavMenu>
 			{/if}
 		</ul>

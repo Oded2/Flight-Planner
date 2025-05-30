@@ -80,7 +80,7 @@
 </script>
 
 <form
-	class="card bg-base-300 outline-info/50 m-1 min-w-100 transition-none"
+	class="card bg-base-200/80 outline-accent/50 min-w-100 shadow-lg transition-none"
 	class:outline={$editIndex != -1}
 	dir="auto"
 	onsubmit={(e) => {
