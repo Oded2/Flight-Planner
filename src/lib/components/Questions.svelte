@@ -11,8 +11,8 @@
 
 	let title: string = $state(currentInfo.title);
 	let owner: string = $state(currentInfo.owner);
-	let fuelPerHour: number | null = $state(null);
-	let speed: number | null = $state(null);
+	let fuelPerHour: number | null = $state(currentInfo.fuelPerHour);
+	let speed: number | null = $state(currentInfo.speed);
 
 	function handleSubmit() {
 		if (!fuelPerHour || !speed) return;
