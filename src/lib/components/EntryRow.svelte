@@ -35,7 +35,7 @@
 	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>
 		{#if entry.identifierPoints.length > 1}
 			<div class="inline-flex">
-				<ul class="list-outside list-disc">
+				<ul class="list-outside list-disc ps-1">
 					{#each entry.identifierPoints as point}
 						<li>{point.replaceAll('_', ',')}</li>
 					{/each}
