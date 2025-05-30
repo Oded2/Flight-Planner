@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, type Snippet } from 'svelte';
+	import IconLabel from './IconLabel.svelte';
 
 	const { label, iconClass, children }: { label: string; iconClass: string; children: Snippet } =
 		$props();
@@ -18,7 +19,7 @@
 
 <li>
 	<details bind:this={detailsElement}>
-		<summary><i class={iconClass}></i> <span class="hidden sm:inline">{label}</span></summary>
+		<summary><IconLabel {iconClass} {label}></IconLabel></summary>
 		<ul class="bg-base-100 text-base-content z-10 rounded-t-none p-2">
 			{@render children()}
 		</ul>

@@ -8,6 +8,7 @@
 	import FormContainer from './FormContainer.svelte';
 	import FormActions from './FormActions.svelte';
 	import FormCard from './FormCard.svelte';
+	import IconLabel from './IconLabel.svelte';
 
 	const lastIndex = get(info).entries.length - 1;
 
@@ -94,7 +95,7 @@
 				resetValues();
 			}
 		}}
-		class="me-auto cursor-pointer font-light underline"
+		class="btn btn-neutral btn-xs me-auto"
 	>
 		{$editIndex == -1 ? $t('back') : $t('cancel')}
 	</button>
@@ -133,17 +134,19 @@
 		<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
 	</FormContainer>
 	<FormActions>
-		<button type="submit" class="btn btn-primary w-full"
-			>{$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}
-		</button>
 		<a
 			href="/view"
 			target="_blank"
-			class="btn btn-neutral w-full"
+			class="btn btn-secondary"
 			class:btn-disabled={$info.entries.length == 0}
 		>
-			<i class="fa-solid fa-arrow-up-right-from-square"></i>
-			{$t('view')}
+			<IconLabel iconClass="fa-solid fa-up-right-from-square" label="View"></IconLabel>
 		</a>
+		<button type="submit" class="btn btn-primary">
+			<IconLabel
+				iconClass="fa-solid fa-circle-plus"
+				label={$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}
+			></IconLabel>
+		</button>
 	</FormActions>
 </FormCard>

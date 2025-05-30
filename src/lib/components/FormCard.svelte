@@ -14,8 +14,8 @@
 		e.preventDefault();
 		handleSubmit();
 	}}
-	class="card bg-base-200/80 outline-accent/50 shadow-lg transition-none"
-	class:outline={active}
+	class="card bg-base-200/80 ring-accent/50 shadow-lg transition-all"
+	class:ring-2={active}
 >
 	<div class="card-body">
 		<h2 class="card-title">{label}</h2>
