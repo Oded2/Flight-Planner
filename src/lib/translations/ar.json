@@ -44,5 +44,6 @@
     "modify_plan": "عدّل مخطط الرحلة",
     "reset_plan": "إعادة تعيين المخطط",
     "remove": "إزالة",
-    "seperate_commas": "مفصول بفواصل (أ، ب، ت)"
+    "seperate_commas": "مفصول بفواصل (أ، ب، ت)",
+    "placeholder_comma": "اكتب _ لإضافة فاصلة"
 }

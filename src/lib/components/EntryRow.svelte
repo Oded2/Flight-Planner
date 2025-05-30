@@ -37,12 +37,12 @@
 			<div class="inline-flex">
 				<ul class="list-outside list-disc">
 					{#each entry.identifierPoints as point}
-						<li>{point}</li>
+						<li>{point.replaceAll('_', ',')}</li>
 					{/each}
 				</ul>
 			</div>
 		{:else}
-			{entry.identifierPoints[0] ?? '-'}
+			{entry.identifierPoints[0]?.replaceAll('_', ',') ?? '-'}
 		{/if}
 	</td>
 	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>{entry.story || '-'}</td>

@@ -135,8 +135,9 @@
 			></FormInput>
 			<FormInput
 				bind:value={pointsText}
-				placeholder={$t('seperate_commas')}
 				label={$t('entry_identifier')}
+				placeholder={$t('seperate_commas')}
+				tooltip={$t('placeholder_comma')}
 			></FormInput>
 			<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
 		</FormContainer>

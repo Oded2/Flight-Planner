@@ -44,5 +44,6 @@
     "modify_plan": "Modify Flight Plan",
     "reset_plan": "Reset flight plan",
     "remove": "Remove",
-    "seperate_commas": "Comma-seperated (A, B, C)"
+    "seperate_commas": "Comma-seperated (A, B, C)",
+    "placeholder_comma": "Type _ to include a comma"
 }

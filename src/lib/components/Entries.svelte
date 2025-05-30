@@ -31,7 +31,7 @@
 <div bind:this={refDiv} class="flex grow grid-cols-8 flex-col gap-4 xl:grid" dir="auto">
 	<!-- Placeholder text in order for dir="auto" to work properly -->
 	<h1 class="hidden">{$t('welcome')}</h1>
-	<div class="w-full overflow-auto xl:col-span-3">
+	<div class="xl:col-span-3">
 		<EntryForm></EntryForm>
 	</div>
 	<div bind:this={xlContainer} class="mx-auto flex w-full flex-col xl:col-span-5">
