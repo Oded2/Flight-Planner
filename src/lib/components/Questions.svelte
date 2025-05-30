@@ -6,6 +6,7 @@
 	import { get } from 'svelte/store';
 	import FormContainer from './FormContainer.svelte';
 	import FormActions from './FormActions.svelte';
+	import FormCard from './FormCard.svelte';
 
 	const currentInfo = get(info);
 
@@ -21,16 +22,8 @@
 	}
 </script>
 
-<form
-	dir="auto"
-	class="card bg-base-200/80 my-auto md:mx-auto md:w-2xl"
-	onsubmit={(e) => {
-		e.preventDefault();
-		handleSubmit();
-	}}
->
-	<div class="card-body">
-		<h2 class="card-title mb-2">{$t('first_questions_label')}</h2>
+<div class="my-auto md:mx-auto md:w-2xl">
+	<FormCard label={$t('first_questions_label')} {handleSubmit}>
 		<FormContainer>
 			<FormInput
 				label={$t('title_question')}
@@ -62,5 +55,5 @@
 		<FormActions>
 			<button type="submit" class="btn btn-primary">{$t('next')}</button>
 		</FormActions>
-	</div>
-</form>
+	</FormCard>
+</div>

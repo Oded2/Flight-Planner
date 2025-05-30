@@ -7,6 +7,7 @@
 	import { type Entry } from '$lib';
 	import FormContainer from './FormContainer.svelte';
 	import FormActions from './FormActions.svelte';
+	import FormCard from './FormCard.svelte';
 
 	const lastIndex = get(info).entries.length - 1;
 
@@ -79,81 +80,70 @@
 	});
 </script>
 
-<form
-	class="card bg-base-200/80 outline-accent/50 min-w-100 shadow-lg transition-none"
-	class:outline={$editIndex != -1}
-	dir="auto"
-	onsubmit={(e) => {
-		e.preventDefault();
-		handleEntry();
-	}}
+<FormCard
+	label={`${$t('entries_label')} ${(($editIndex == -1 ? $info.entries.length : $editIndex) + 1).toLocaleString()}`}
+	active={$editIndex != -1}
+	handleSubmit={handleEntry}
 >
-	<div class="card-body">
-		<div class="mb-2">
-			<h2 class="card-title">
-				{`${$t('entries_label')} ${(($editIndex == -1 ? $info.entries.length : $editIndex) + 1).toLocaleString()}`}
-			</h2>
-			<button
-				type="button"
-				onclick={() => {
-					if ($editIndex == -1) back();
-					else {
-						resetEditIndex();
-						resetValues();
-					}
-				}}
-				class="me-auto cursor-pointer font-light underline"
-			>
-				{$editIndex == -1 ? $t('back') : $t('cancel')}
-			</button>
-		</div>
-		<FormContainer>
-			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
-			<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>
-			<FormInput
-				bind:value={heading}
-				inputType="number"
-				min={1}
-				max={360}
-				step={1}
-				label={$t('entry_heading')}
-			></FormInput>
-			<FormInput
-				bind:value={altitude}
-				inputType="number"
-				min={0}
-				label={$t('entry_altitude')}
-				required
-			></FormInput>
-			<FormInput
-				bind:value={distance}
-				inputType="number"
-				min={0.001}
-				step={0.001}
-				label={$t('entry_distance')}
-				required
-			></FormInput>
-			<FormInput
-				bind:value={pointsText}
-				label={$t('entry_identifier')}
-				placeholder={$t('seperate_commas')}
-				tooltip={$t('placeholder_comma')}
-			></FormInput>
-			<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
-		</FormContainer>
-		<FormActions>
-			<button type="submit" class="btn btn-primary w-full"
-				>{$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}
-			</button>
-			<a
-				href="/view"
-				target="_blank"
-				class="btn btn-neutral w-full"
-				class:btn-disabled={$info.entries.length == 0}
-			>
-				<i class="fa-solid fa-arrow-up-right-from-square"></i>
-				{$t('view')}
-			</a>
-		</FormActions>
-	</div>
-</form>
+	<button
+		type="button"
+		onclick={() => {
+			if ($editIndex == -1) back();
+			else {
+				resetEditIndex();
+				resetValues();
+			}
+		}}
+		class="me-auto cursor-pointer font-light underline"
+	>
+		{$editIndex == -1 ? $t('back') : $t('cancel')}
+	</button>
+	<FormContainer>
+		<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
+		<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>
+		<FormInput
+			bind:value={heading}
+			inputType="number"
+			min={1}
+			max={360}
+			step={1}
+			label={$t('entry_heading')}
+		></FormInput>
+		<FormInput
+			bind:value={altitude}
+			inputType="number"
+			min={0}
+			label={$t('entry_altitude')}
+			required
+		></FormInput>
+		<FormInput
+			bind:value={distance}
+			inputType="number"
+			min={0.001}
+			step={0.001}
+			label={$t('entry_distance')}
+			required
+		></FormInput>
+		<FormInput
+			bind:value={pointsText}
+			label={$t('entry_identifier')}
+			placeholder={$t('seperate_commas')}
+			tooltip={$t('placeholder_comma')}
+		></FormInput>
+		<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
+	</FormContainer>
+	<FormActions>
+		<button type="submit" class="btn btn-primary w-full"
+			>{$editIndex == -1 ? $t('add_entry') : $t('edit_entry')}
+		</button>
+		<a
+			href="/view"
+			target="_blank"
+			class="btn btn-neutral w-full"
+			class:btn-disabled={$info.entries.length == 0}
+		>
+			<i class="fa-solid fa-arrow-up-right-from-square"></i>
+			{$t('view')}
+		</a>
+	</FormActions>
+</FormCard>
