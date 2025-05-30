@@ -23,8 +23,12 @@
 		{:else}
 			<a href="/" class="btn btn-ghost text-xl">Flight Planner</a>
 		{/if}
-		<a href={PUBLIC_REPO_LINK} class="btn btn-neutral" aria-label="Github Link">
-			<i class="fa-brands fa-github text-2xl"></i>
+		<a
+			href={PUBLIC_REPO_LINK}
+			class="btn border-none bg-gray-950 shadow-none"
+			aria-label="Github Link"
+		>
+			<i class="fa-brands fa-github text-2xl text-gray-50"></i>
 		</a>
 	</div>
 	<div class="navbar-end">
