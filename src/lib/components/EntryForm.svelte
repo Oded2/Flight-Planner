@@ -4,7 +4,7 @@
 	import { t } from '$lib/stores/localization';
 	import { back } from '$lib/stores/stages';
 	import { get } from 'svelte/store';
-	import { inputToNum, type Entry } from '$lib';
+	import { type Entry } from '$lib';
 	import FormContainer from './FormContainer.svelte';
 	import FormActions from './FormActions.svelte';
 
@@ -12,12 +12,9 @@
 
 	let from: string = $state($info.entries[lastIndex < 0 ? 0 : lastIndex]?.to ?? '');
 	let to: string = $state('');
-	let rawHeading: string = $state('');
-	const heading: number | undefined = $derived(inputToNum(rawHeading));
-	let rawAltitude: string = $state('');
-	const altitude: number | undefined = $derived(inputToNum(rawAltitude));
-	let rawDistance: string = $state('');
-	const distance: number | undefined = $derived(inputToNum(rawDistance));
+	let heading: number | null = $state(null);
+	let altitude: number | null = $state(null);
+	let distance: number | null = $state(null);
 	let identifierPoints: string = $state('');
 	let story: string = $state('');
 
@@ -27,9 +24,9 @@
 		const lastEntry = get(info).entries.at(-1);
 		from = lastEntry?.to ?? '';
 		to = '';
-		rawHeading = '';
-		rawAltitude = lastEntry?.altitude?.toString() ?? '';
-		rawDistance = '';
+		heading = null;
+		altitude = null;
+		distance = null;
 		identifierPoints = '';
 		story = '';
 	}
@@ -39,8 +36,8 @@
 		const entry: Entry = {
 			from: from.trim(),
 			to: to.trim(),
-			heading,
-			altitude,
+			heading: heading ?? undefined,
+			altitude: altitude ?? undefined,
 			distance,
 			identifierPoints: identifierPoints.trim(),
 			story: story.trim()
@@ -61,9 +58,9 @@
 			const entry = get(info).entries[index];
 			from = entry.from;
 			to = entry.to;
-			rawHeading = entry.heading?.toString() ?? '';
-			rawAltitude = entry.altitude?.toString() ?? '';
-			rawDistance = entry.distance.toString() ?? '';
+			heading = entry.heading ?? null;
+			altitude = entry.altitude ?? null;
+			distance = entry.distance ?? null;
 			identifierPoints = entry.identifierPoints;
 			story = entry.story;
 		} else {
@@ -111,7 +108,7 @@
 			<FormInput bind:value={from} label={$t('entry_from')} required></FormInput>
 			<FormInput bind:value={to} label={$t('entry_to')} required></FormInput>
 			<FormInput
-				bind:value={rawHeading}
+				bind:value={heading}
 				inputType="number"
 				min={1}
 				max={360}
@@ -119,14 +116,14 @@
 				label={$t('entry_heading')}
 			></FormInput>
 			<FormInput
-				bind:value={rawAltitude}
+				bind:value={altitude}
 				inputType="number"
 				min={0}
 				label={$t('entry_altitude')}
 				required
 			></FormInput>
 			<FormInput
-				bind:value={rawDistance}
+				bind:value={distance}
 				inputType="number"
 				min={0.001}
 				step={0.001}

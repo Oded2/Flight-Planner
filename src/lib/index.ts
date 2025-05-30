@@ -16,10 +16,6 @@ export type Info = {
 	speed: number;
 };
 
-export function inputToNum(rawInput: string): number | undefined {
-	return rawInput ? +rawInput : undefined;
-}
-
 function entryTypeGuard(obj: any): obj is Entry {
 	return (
 		obj &&

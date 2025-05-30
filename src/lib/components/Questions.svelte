@@ -4,7 +4,6 @@
 	import { info, updateInitialInfo } from '$lib/stores/info';
 	import FormInput from './FormInput.svelte';
 	import { get } from 'svelte/store';
-	import { inputToNum } from '$lib';
 	import FormContainer from './FormContainer.svelte';
 	import FormActions from './FormActions.svelte';
 
@@ -12,10 +11,8 @@
 
 	let title: string = $state(currentInfo.title);
 	let owner: string = $state(currentInfo.owner);
-	let rawFuelPerHour: string = $state(currentInfo.fuelPerHour.toString());
-	const fuelPerHour: number | undefined = $derived(inputToNum(rawFuelPerHour));
-	let rawSpeed: string = $state(currentInfo.speed.toString());
-	const speed: number | undefined = $derived(inputToNum(rawSpeed));
+	let fuelPerHour: number | null = $state(null);
+	let speed: number | null = $state(null);
 
 	function handleSubmit() {
 		if (!fuelPerHour || !speed) return;
@@ -51,7 +48,7 @@
 				inputType="number"
 				required
 				min={0}
-				bind:value={rawFuelPerHour}
+				bind:value={fuelPerHour}
 			></FormInput>
 			<FormInput
 				label={$t('speed_question')}
@@ -59,7 +56,7 @@
 				inputType="number"
 				required
 				min={1}
-				bind:value={rawSpeed}
+				bind:value={speed}
 			></FormInput>
 		</FormContainer>
 		<FormActions>

@@ -16,7 +16,7 @@
 		placeholder?: string;
 		required?: boolean;
 		inputType?: HTMLInputTypeAttribute;
-		value?: string | number;
+		value?: string | number | null;
 		step?: number;
 		min?: number;
 		max?: number;
