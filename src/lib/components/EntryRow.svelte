@@ -19,12 +19,7 @@
 </script>
 
 <tr>
-	<td
-		class="sticky left-0"
-		class:bg-base-100={index == -1 || index % 2 == 0}
-		class:bg-base-200={index != -1 && index % 2 != 0}
-		>{index == -1 ? $t('total') : (index + 1).toLocaleString()}
-	</td>
+	<td>{index == -1 ? $t('total') : (index + 1).toLocaleString()} </td>
 	<td class="whitespace-nowrap">{entry.from}</td>
 	<td class="whitespace-nowrap">{entry.to}</td>
 	<td>{entry.heading?.toLocaleString().padStart(3, '0') ?? '-'}</td>
@@ -53,7 +48,7 @@
 	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>{entry.story || '-'}</td>
 	{#if editable}
 		<td
-			class="sticky right-0"
+			class="sticky end-0"
 			class:bg-base-100={index == -1 || index % 2 == 0}
 			class:bg-base-200={index != -1 && index % 2 != 0}
 		>
@@ -62,8 +57,9 @@
 					<button
 						type="button"
 						class="cursor-pointer underline"
-						onclick={() => editIndex.set(index)}>{$t('edit')}</button
-					>
+						onclick={() => editIndex.set(index)}
+						>{$t('edit')}
+					</button>
 					<span>/</span>
 					<button type="button" class="cursor-pointer underline" onclick={() => removeEntry(index)}>
 						{$t('remove')}
