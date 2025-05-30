@@ -6,14 +6,13 @@
 
 	let detailsElement: HTMLDetailsElement;
 
-	function handleClickOutside(event: MouseEvent) {
-		if (event.target instanceof Node && !detailsElement.contains(event.target))
-			detailsElement.removeAttribute('open');
+	function handleClick() {
+		detailsElement.removeAttribute('open');
 	}
 
 	onMount(() => {
-		window.addEventListener('click', handleClickOutside);
-		return () => window.removeEventListener('click', handleClickOutside);
+		window.addEventListener('click', handleClick);
+		return () => window.removeEventListener('click', handleClick);
 	});
 </script>
 
