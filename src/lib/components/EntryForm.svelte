@@ -15,7 +15,7 @@
 	let heading: number | null = $state(null);
 	let altitude: number | null = $state(null);
 	let distance: number | null = $state(null);
-	let identifierPoints: string = $state('');
+	let pointsText: string = $state('');
 	let story: string = $state('');
 
 	let originalEntriesLength = get(info).entries.length;
@@ -27,7 +27,7 @@
 		heading = null;
 		altitude = null;
 		distance = null;
-		identifierPoints = '';
+		pointsText = '';
 		story = '';
 	}
 
@@ -39,7 +39,7 @@
 			heading: heading ?? undefined,
 			altitude: altitude ?? undefined,
 			distance,
-			identifierPoints: identifierPoints
+			identifierPoints: pointsText
 				.split(',')
 				.map((val) => val.trim())
 				.filter((val) => val),
@@ -64,7 +64,7 @@
 			heading = entry.heading ?? null;
 			altitude = entry.altitude ?? null;
 			distance = entry.distance ?? null;
-			identifierPoints = entry.identifierPoints.join(', ');
+			pointsText = entry.identifierPoints.join(', ');
 			story = entry.story;
 		} else {
 			resetValues();
@@ -134,7 +134,7 @@
 				required
 			></FormInput>
 			<FormInput
-				bind:value={identifierPoints}
+				bind:value={pointsText}
 				placeholder={$t('seperate_commas')}
 				label={$t('entry_identifier')}
 			></FormInput>
