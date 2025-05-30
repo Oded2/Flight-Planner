@@ -29,6 +29,7 @@
 		if (localStorageInfo) {
 			const infoJson = JSON.parse(localStorageInfo);
 			if (infoTypeGuard(infoJson)) info.set(infoJson);
+			else console.error('Invalid info from local storage');
 		}
 		isReady = true;
 	});

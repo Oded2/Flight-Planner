@@ -39,7 +39,10 @@
 			heading: heading ?? undefined,
 			altitude: altitude ?? undefined,
 			distance,
-			identifierPoints: identifierPoints.trim(),
+			identifierPoints: identifierPoints
+				.split(',')
+				.map((val) => val.trim())
+				.filter((val) => val),
 			story: story.trim()
 		};
 		if (get(editIndex) == -1) {
@@ -61,7 +64,7 @@
 			heading = entry.heading ?? null;
 			altitude = entry.altitude ?? null;
 			distance = entry.distance ?? null;
-			identifierPoints = entry.identifierPoints;
+			identifierPoints = entry.identifierPoints.join(', ');
 			story = entry.story;
 		} else {
 			resetValues();
@@ -130,7 +133,11 @@
 				label={$t('entry_distance')}
 				required
 			></FormInput>
-			<FormInput bind:value={identifierPoints} label={$t('entry_identifier')}></FormInput>
+			<FormInput
+				bind:value={identifierPoints}
+				placeholder={$t('seperate_commas')}
+				label={$t('entry_identifier')}
+			></FormInput>
 			<FormInput bind:value={story} label={$t('entry_story')}></FormInput>
 		</FormContainer>
 		<FormActions>

@@ -43,5 +43,6 @@
     "view_current": "Ver plan de vuelo actual",
     "modify_plan": "Modificar plan de vuelo",
     "reset_plan": "Reiniciar plan de vuelo",
-    "remove": "Eliminar"
+    "remove": "Eliminar",
+    "seperate_commas": "Separado por comas (A, B, C)"
 }

@@ -4,7 +4,7 @@ export type Entry = {
 	heading?: number;
 	altitude?: number;
 	distance: number;
-	identifierPoints: string;
+	identifierPoints: string[];
 	story: string;
 };
 
@@ -25,7 +25,8 @@ function entryTypeGuard(obj: any): obj is Entry {
 		(obj.heading === undefined || typeof obj.heading === 'number') &&
 		(obj.altitude === undefined || typeof obj.altitude === 'number') &&
 		typeof obj.distance === 'number' &&
-		typeof obj.identifierPoints === 'string' &&
+		Array.isArray(obj.identifierPoints) &&
+		obj.identifierPoints.every((p: any) => typeof p === 'string') &&
 		typeof obj.story === 'string'
 	);
 }

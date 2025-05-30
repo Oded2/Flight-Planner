@@ -26,14 +26,24 @@
 	<td>{entry.altitude?.toLocaleString() ?? '-'}</td>
 	<td>{entry.distance.toLocaleString()}</td>
 	<td>{formatHour(time)}</td>
-	<td
-		>{fuel.toLocaleString(undefined, {
+	<td>
+		{fuel.toLocaleString(undefined, {
 			minimumFractionDigits: 0,
 			maximumFractionDigits: 1
 		})}
 	</td>
 	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>
-		{entry.identifierPoints || '-'}
+		{#if entry.identifierPoints.length > 1}
+			<div class="inline-flex">
+				<ul class="list-outside list-disc">
+					{#each entry.identifierPoints as point}
+						<li>{point}</li>
+					{/each}
+				</ul>
+			</div>
+		{:else}
+			{entry.identifierPoints[0] ?? '-'}
+		{/if}
 	</td>
 	<td class="overflow-hidden overflow-ellipsis" class:max-w-100={editable}>{entry.story || '-'}</td>
 	{#if editable}

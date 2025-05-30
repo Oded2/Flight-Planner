@@ -43,5 +43,6 @@
     "view_current": "View current flight plan",
     "modify_plan": "Modify Flight Plan",
     "reset_plan": "Reset flight plan",
-    "remove": "Remove"
+    "remove": "Remove",
+    "seperate_commas": "Comma-seperated (A, B, C)"
 }

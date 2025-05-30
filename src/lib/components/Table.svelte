@@ -10,7 +10,7 @@
 		from: '-',
 		to: '-',
 		distance: $info.entries.reduce((acc, item) => (acc += item.distance), 0),
-		identifierPoints: '-',
+		identifierPoints: [],
 		story: '-'
 	});
 </script>
