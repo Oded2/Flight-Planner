@@ -15,7 +15,7 @@
 	$effect(() => {
 		if (isReady && page.url.pathname === '/view') {
 			originalTheme = document.documentElement.getAttribute('data-theme');
-			document.documentElement.setAttribute('data-theme', 'light');
+			document.documentElement.setAttribute('data-theme', 'winter');
 		} else if (isReady && originalTheme)
 			document.documentElement.setAttribute('data-theme', originalTheme);
 	});
