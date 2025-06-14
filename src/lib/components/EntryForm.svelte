@@ -140,7 +140,7 @@
 			class="btn btn-secondary"
 			class:btn-disabled={$info.entries.length == 0}
 		>
-			<IconLabel iconClass="fa-solid fa-up-right-from-square" label="View"></IconLabel>
+			<IconLabel iconClass="fa-solid fa-up-right-from-square" label={$t('view')}></IconLabel>
 		</a>
 		<button type="submit" class="btn btn-primary">
 			<IconLabel
